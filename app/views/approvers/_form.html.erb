@@ -1,0 +1,18 @@
+<%= form_with(model: approver) do |form| %>
+  <% if approver.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>O projeto não pode ser salvo:</h4>
+
+      <ul>
+        <% approver.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label :name, class: 'form-label' %>
+  <%= form.text_field :name, class: 'form-control'  %>
+
+  <%= form.submit 'Salvar', class: 'btn btn-primary mt-3' %>
+<% end %>

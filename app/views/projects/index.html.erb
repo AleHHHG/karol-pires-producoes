@@ -1,0 +1,24 @@
+<h2 class="mt-5 mb-5">
+  Projetos
+  <%= link_to 'Novo Projeto', new_project_path, class: 'btn btn-primary float-end' %>
+</h2>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= link_to 'Editar', edit_project_path(project) %> | <%= link_to 'Deletar', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

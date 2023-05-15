@@ -1,0 +1,47 @@
+<%= form_with(model: order) do |form| %>
+  <% if order.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>O pedido não pode ser salvo:</h4>
+
+      <ul>
+        <% order.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label :owner, 'Solicitante', class: 'form-label' %>
+  <%= select :order, :owner_id, Owner.all.collect { |p| [ p.name, p.id ] }, { prompt: 'Selecione o solicitante' }, { class: 'form-select' }  %>
+  <br/>
+
+  <%= form.label :project, 'Projeto', class: 'form-label' %>
+  <%= select :order, :project_id, Project.all.collect { |p| [ p.name, p.id ] }, { prompt: 'Selecione o projeto' }, { class: 'form-select' }  %>
+  <br/>
+
+  <%= form.label :supplier, 'Fornecedor', class: 'form-label' %>
+  <%= select :order, :supplier_id, Supplier.all.collect { |p| [ p.name, p.id ] }, { prompt: 'Selecione o fornecedor' }, { class: 'form-select' }  %>
+  <br/>
+
+  <%= form.label :approver, 'Aprovador', class: 'form-label' %>
+  <%= select :order, :approver_id, Approver.all.collect { |p| [ p.name, p.id ] }, { prompt: 'Selecione o Aprovador' }, { class: 'form-select' }  %>
+  <br/>
+
+  <%= form.label :goal, 'Finalidade', class: 'form-label' %>
+  <%= form.text_area :goal, size: "70x5", class: 'form-control'  %>
+  <br/>
+
+  <%= form.label :note, 'Observação', class: 'form-label' %>
+  <%= form.text_area :note, size: "70x5", class: 'form-control'  %>
+  <br/>
+
+  <% if order.new_record? %>
+    <%= form.hidden_field :status, value: 'requested' %>
+  <% else %>
+    <%= form.label :status, 'Status', class: 'form-label' %>
+    <%= select :order, :status, [['Solicitado', 'requested'], ['Em andamento', 'in_progress'], ['Concluído', 'done']], {}, class: 'form-select' %>
+  <% end %>
+
+  <%= form.submit 'Salvar', class: 'btn btn-primary mt-3' %>
+<% end %>
+<br clear="all"/>

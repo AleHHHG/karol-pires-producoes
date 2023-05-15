@@ -1,0 +1,4 @@
+class Approver < ApplicationRecord
+  validates :name, presence: true
+  has_many :orders
+end

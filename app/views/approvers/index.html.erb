@@ -1,0 +1,24 @@
+<h2 class="mt-5 mb-5">
+  Aprovadores
+  <%= link_to 'Novo Aprovador', new_approver_path, class: 'btn btn-primary float-end' %>
+</h2>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @approvers.each do |approver| %>
+      <tr>
+        <td><%= approver.name %></td>
+        <td><%= link_to 'Editar', edit_approver_path(approver) %> | <%= link_to 'Deletar', approver, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
