@@ -1,4 +1,73 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<h2 class="mt-5 mb-4">
+	#<%= @order.id %> Pedido
+	<%= link_icon(orders_path, 'btn btn-light float-end', 'fa-regular fa-circle-left', 'Voltar' ) %>
+</h2>
+<div class="row">
+	<div class="col-6">
+		<div class="card">
+		  <div class="card-body">
+		    <h5 class="card-title">
+		    	Informações gerais
+		    	<% if @order.requested? %>
+	            	<span class="badge text-bg-secondary float-end">Solicitado</span>
+	          	<% elsif @order.in_progress? %>
+	           	 <span class="badge text-bg-info float-end">Em andamento</span>
+	          	<% else %>
+	            	<span class="badge text-bg-success float-end">Concluído</span>
+	          	<% end %>
+		    </h5>
+		    <p><b>Solicitante:</b> <%= @order.owner.name %></p>
+		    <p><b>Aprovado por:</b> <%= @order.approver.name %></p>
+		    <p><b>Valor:</b> <%= number_to_currency(@order.price, unit: 'R$ ', separator: ',', delimiter: '.') %></p>
+		    <p><b>Criado em:</b> <%= @order.created_at.strftime('%d/%m/%Y') %></p>
+		    <p><b>Data de vencimento:</b> <%= @order.due_date.strftime('%d/%m/%Y') %></p>
+		    <p><b>Finalidade:</b> <%= @order.goal %></p>
+		    <p><b>Observação:</b> <%= @order.note %></p>
+		  </div>
+		</div>
+	</div>
+	<div class="col">
+		<div class="card">
+		  <div class="card-body">
+		    <h5 class="card-title">Projeto</h5>
+	     	<p><b>Nome:</b> <%= @order.project.name %></p>
+	     	<p><b>E-mail:</b> <%= @order.project.email %></p>
+	     	<p><b>Telefone:</b> <%= @order.project.phone %></p>
+	     	<a data-bs-toggle="collapse" href="#projectDataBank">
+			    Dados Bancários
+		  	</a>
+		  	<div class="collapse" id="projectDataBank">
+		  		<br/>
+			  <div class="card text-bg-secondary card-body">
+			    <p><b>Banco:</b> <%= @order.project.bank %></p>
+		    	<p><b>Agencia:</b> <%= @order.project.ag %></p>
+		    	<p><b>Conta:</b> <%= @order.project.cc %></p>
+		    	<p><b>Pix:</b> <%= @order.project.pix %></p>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	</div>
+	<div class="col">
+		<div class="card">
+		  <div class="card-body">
+		    <h5 class="card-title">Fornecedor</h5>
+		    <p><b>Nome:</b> <%= @order.supplier.name %></p>
+	     	<p><b>E-mail:</b> <%= @order.supplier.email %></p>
+	     	<p><b>Telefone:</b> <%= @order.supplier.phone %></p>
+	     	<a data-bs-toggle="collapse" href="#supplierDataBank">
+			    Dados Bancários
+		  	</a>
+		  	<div class="collapse" id="supplierDataBank">
+		  		<br/>
+			  <div class="card text-bg-secondary card-body">
+			    <p><b>Banco:</b> <%= @order.supplier.bank %></p>
+		    	<p><b>Agencia:</b> <%= @order.supplier.ag %></p>
+		    	<p><b>Conta:</b> <%= @order.supplier.cc %></p>
+		    	<p><b>Pix:</b> <%= @order.supplier.pix %></p>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	</div>
+</div>
