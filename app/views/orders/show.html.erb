@@ -1,31 +1,14 @@
 <h2 class="mt-5 mb-4">
-	#<%= @order.id %> Pedido
+	<% if @order.requested? %>
+		<span class="badge text-bg-secondary">Solicitado</span>
+	<% elsif @order.in_progress? %>
+	 	<span class="badge text-bg-info">Em andamento</span>
+	<% else %>
+		<span class="badge text-bg-success">Concluído</span>
+	<% end %>
 	<%= link_icon(orders_path, 'btn btn-light float-end', 'fa-regular fa-circle-left', 'Voltar' ) %>
 </h2>
 <div class="row">
-	<div class="col-6">
-		<div class="card">
-		  <div class="card-body">
-		    <h5 class="card-title">
-		    	Informações gerais
-		    	<% if @order.requested? %>
-	            	<span class="badge text-bg-secondary float-end">Solicitado</span>
-	          	<% elsif @order.in_progress? %>
-	           	 <span class="badge text-bg-info float-end">Em andamento</span>
-	          	<% else %>
-	            	<span class="badge text-bg-success float-end">Concluído</span>
-	          	<% end %>
-		    </h5>
-		    <p><b>Solicitante:</b> <%= @order.owner.name %></p>
-		    <p><b>Aprovado por:</b> <%= @order.approver.name %></p>
-		    <p><b>Valor:</b> <%= number_to_currency(@order.price, unit: 'R$ ', separator: ',', delimiter: '.') %></p>
-		    <p><b>Criado em:</b> <%= @order.created_at.strftime('%d/%m/%Y') %></p>
-		    <p><b>Data de vencimento:</b> <%= @order.due_date.strftime('%d/%m/%Y') %></p>
-		    <p><b>Finalidade:</b> <%= @order.goal %></p>
-		    <p><b>Observação:</b> <%= @order.note %></p>
-		  </div>
-		</div>
-	</div>
 	<div class="col">
 		<div class="card">
 		  <div class="card-body">
@@ -47,8 +30,7 @@
 			</div>
 		  </div>
 		</div>
-	</div>
-	<div class="col">
+		<br/>
 		<div class="card">
 		  <div class="card-body">
 		    <h5 class="card-title">Fornecedor</h5>
@@ -67,6 +49,22 @@
 		    	<p><b>Pix:</b> <%= @order.supplier.pix %></p>
 			  </div>
 			</div>
+		  </div>
+		</div>
+	</div>
+	<div class="col-8">
+		<div class="card border-0">
+		  <div class="card-body">
+		    <h3 class="card-title mb-4">
+		    	Informações gerais
+		    </h3>
+		    <p><b>Solicitante:</b> <%= @order.owner.name %></p>
+		    <p><b>Aprovado por:</b> <%= @order.approver.name %></p>
+		    <p><b>Valor:</b> <%= number_to_currency(@order.price, unit: 'R$ ', separator: ',', delimiter: '.') %></p>
+		    <p><b>Criado em:</b> <%= @order.created_at.strftime('%d/%m/%Y') %></p>
+		    <p><b>Data de vencimento:</b> <%= @order.due_date.strftime('%d/%m/%Y') %></p>
+		    <p><b>Finalidade:</b> <%= @order.goal %></p>
+		    <p><b>Observação:</b> <%= @order.note %></p>
 		  </div>
 		</div>
 	</div>
