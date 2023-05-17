@@ -1,5 +1,7 @@
-<h2 class="mt-5 mb-4">Novo fornecedor</h2>
+<h2 class="mt-5 mb-4">
+	Novo fornecedor
+	<%= link_icon(suppliers_path, 'btn btn-light float-end', 'fa-regular fa-circle-left', 'Voltar' ) %>
+</h2>
 
 <%= render 'form', supplier: @supplier %>
 
-<%= link_to 'Back', suppliers_path %>

@@ -3,6 +3,7 @@ class ApproversController < ApplicationController
 
   # GET /approvers or /approvers.json
   def index
+    @page_title = 'Aprovadores'
     @approvers = Approver.all
   end
 
@@ -12,11 +13,13 @@ class ApproversController < ApplicationController
 
   # GET /approvers/new
   def new
+    @page_title = 'Novo Aprovador'
     @approver = Approver.new
   end
 
   # GET /approvers/1/edit
   def edit
+    @page_title = 'Editar Aprovador'
   end
 
   # POST /approvers or /approvers.json

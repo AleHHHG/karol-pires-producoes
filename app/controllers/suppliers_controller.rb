@@ -3,6 +3,7 @@ class SuppliersController < ApplicationController
 
   # GET /suppliers or /suppliers.json
   def index
+    @page_title = 'Fornecedores'
     @suppliers = Supplier.all
   end
 
@@ -12,11 +13,13 @@ class SuppliersController < ApplicationController
 
   # GET /suppliers/new
   def new
+    @page_title = 'Novo Fornecedor'
     @supplier = Supplier.new
   end
 
   # GET /suppliers/1/edit
   def edit
+    @page_title = 'Editar Fornecedor'
   end
 
   # POST /suppliers or /suppliers.json
@@ -65,6 +68,6 @@ class SuppliersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def supplier_params
-      params.require(:supplier).permit(:name)
+      params.require(:supplier).permit(:name, :document_number, :phone, :email, :adress, :bank, :ag, :cc, :pix)
     end
 end

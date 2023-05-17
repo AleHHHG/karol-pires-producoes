@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects or /projects.json
   def index
+    @page_title = 'Projetos'
     @projects = Project.all
   end
 
@@ -12,11 +13,13 @@ class ProjectsController < ApplicationController
 
   # GET /projects/new
   def new
+    @page_title = 'Novo Projeto'
     @project = Project.new
   end
 
   # GET /projects/1/edit
   def edit
+    @page_title = 'Editar Projeto'
   end
 
   # POST /projects or /projects.json
@@ -65,6 +68,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:name)
+      params.require(:project).permit(:name, :document_number, :phone, :email, :adress, :bank, :ag, :cc, :pix)
     end
 end

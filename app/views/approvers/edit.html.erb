@@ -1,6 +1,6 @@
-<h2 class="mt-5 mb-4">Editar Aprovador</h2>
+<h2 class="mt-5 mb-4">
+	Editar Aprovador
+	<%= link_icon(approvers_path, 'btn btn-light float-end', 'fa-regular fa-circle-left', 'Voltar' ) %>
+</h2>
 
 <%= render 'form', approver: @approver %>
-
-<%= link_to 'Show', @approver %> |
-<%= link_to 'Back', approvers_path %>

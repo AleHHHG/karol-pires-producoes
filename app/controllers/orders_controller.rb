@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
+    @page_title = 'Pedidos'
     @pagy, @orders = pagy(apply_scopes(Order).all.order('created_at desc'))
   end
 
@@ -17,11 +18,13 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
+    @page_title = 'Novo pedido'
     @order = Order.new
   end
 
   # GET /orders/1/edit
   def edit
+    @page_title = 'Editar Pedido'
   end
 
   # POST /orders or /orders.json
@@ -70,6 +73,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:owner_id, :project_id, :supplier_id, :approver_id, :goal, :note, :status)
+      params.require(:order).permit(:owner_id, :project_id, :supplier_id, :approver_id, :goal, :note, :status, :price, :due_date)
     end
 end

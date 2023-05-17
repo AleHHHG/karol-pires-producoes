@@ -1,6 +1,6 @@
 <h2 class="mt-5 mb-5">
   Aprovadores
-  <%= link_to 'Novo Aprovador', new_approver_path, class: 'btn btn-primary float-end' %>
+  <%= link_icon(new_approver_path, 'btn btn-primary float-end', 'fa-solid fa-plus', 'Novo Aprovador' ) %>
 </h2>
 
 <table class="table table-hover">
@@ -15,7 +15,17 @@
     <% @approvers.each do |approver| %>
       <tr>
         <td><%= approver.name %></td>
-        <td><%= link_to 'Editar', edit_approver_path(approver) %> | <%= link_to 'Deletar', approver, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn dropdown-toggle btn-md" data-bs-toggle="dropdown" aria-expanded="false">
+              Opções
+            </button>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Editar', edit_approver_path(approver), class: 'dropdown-item' %></li>
+              <li><%= link_to 'Deletar', approver, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %></li>
+            </ul>
+          </div>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -11,8 +11,51 @@
     </div>
   <% end %>
 
-  <%= form.label :name, class: 'form-label' %>
-  <%= form.text_field :name, class: 'form-control'  %>
+  <div class="row">
+    <div class="col">
+      <%= form.label :name, 'Nome', class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control'%>
+    </div>
 
+    <div class="col">
+      <%= form.label :email, 'E-mail', class: 'form-label' %>
+      <%= form.email_field :email, class: 'form-control'%>
+    </div>
+  </div>
+  <br clear="all" />
+  <div class="row">
+    <div class="col">
+      <%= form.label :document_number, 'CNPJ', class: 'form-label' %>
+      <%= form.text_field :document_number, class: 'form-control'  %>
+    </div>
+    <div class="col">
+      <%= form.label :phone, 'Telefone', class: 'form-label' %>
+      <%= form.telephone_field :phone, class: 'form-control'  %>
+    </div>
+  </div>
+
+
+  <br clear="all" />
+
+  <h5 class="card-title mb-2">Dados bancários</h5>
+  <div class="row">
+    <div class="col">
+      <%= form.label :bank, 'Banco', class: 'form-label' %>
+      <%= form.text_field :bank, class: 'form-control'%>
+    </div>
+    <div class="col">
+      <%= form.label :ag, 'Agência', class: 'form-label' %>
+      <%= form.text_field :ag, class: 'form-control'%>
+    </div>
+    <div class="col">
+      <%= form.label :cc, 'Conta', class: 'form-label' %>
+      <%= form.text_field :cc, class: 'form-control'%>
+    </div>
+     <div class="col">
+      <%= form.label :pix, class: 'form-label' %>
+      <%= form.text_field :pix, class: 'form-control'%>
+    </div>
+  </div>
+  <br clear="all" />
   <%= form.submit 'Salvar', class: 'btn btn-primary mt-3' %>
 <% end %>

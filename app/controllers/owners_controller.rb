@@ -3,6 +3,7 @@ class OwnersController < ApplicationController
 
   # GET /owners or /owners.json
   def index
+    @page_title = 'Solicitantes'
     @owners = Owner.all
   end
 
@@ -12,11 +13,13 @@ class OwnersController < ApplicationController
 
   # GET /owners/new
   def new
+    @page_title = 'Novo Solicitante'
     @owner = Owner.new
   end
 
   # GET /owners/1/edit
   def edit
+    @page_title = 'Editar Solicitante'
   end
 
   # POST /owners or /owners.json

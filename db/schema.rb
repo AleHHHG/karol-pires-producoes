@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_15_185127) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_17_205530) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_15_185127) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "approver_id"
+    t.decimal "price"
+    t.datetime "due_date"
     t.index ["approver_id"], name: "index_orders_on_approver_id"
     t.index ["owner_id"], name: "index_orders_on_owner_id"
     t.index ["project_id"], name: "index_orders_on_project_id"
@@ -46,12 +48,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_15_185127) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "document_number"
+    t.string "phone"
+    t.string "email"
+    t.string "adress"
+    t.string "bank"
+    t.string "ag"
+    t.string "cc"
+    t.string "pix"
   end
 
   create_table "suppliers", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "document_number"
+    t.string "phone"
+    t.string "email"
+    t.string "adress"
+    t.string "bank"
+    t.string "ag"
+    t.string "cc"
+    t.string "pix"
   end
 
   add_foreign_key "orders", "approvers"
