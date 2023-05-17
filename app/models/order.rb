@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  validates :goal, :note, :status, presence: true
+  validates :goal, :note, :status, :price, :due_date, presence: true
   belongs_to :project
   belongs_to :supplier
   belongs_to :owner
