@@ -1,0 +1,27 @@
+<h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">
+  Editar Senha
+  <%= link_icon(orders_path, 'btn btn-light float-end', 'fa-regular fa-circle-left', 'Voltar' ) %>
+</h3>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="form-outline mb-4">
+    <%= f.label :password, 'Nova Senha', class: 'form-label' %>
+    <%= f.password_field :password, class: 'form-control form-control-lg' %>
+  </div>
+
+  <div class="form-outline mb-4">
+    <%= f.label :password_confirmation, 'Repita a nova senha', class: 'form-label' %>
+    <%= f.password_field :password_confirmation, class: 'form-control form-control-lg' %>
+  </div>
+
+  <div class="form-outline mb-4">
+    <%= f.label :current_password, 'Senha atual', class: 'form-label' %>
+    <%= f.password_field :current_password, class: 'form-control form-control-lg' %>
+  </div>
+  <div class="d-grid gap-2">
+     <%= f.submit "Alterar Senha", class: 'btn btn-dark btn-lg' %>
+  </div>
+<% end %>
+<br/>
+

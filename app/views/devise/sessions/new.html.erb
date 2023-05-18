@@ -1,0 +1,15 @@
+<h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-outline mb-4">
+    <%= f.label :email, class: 'form-label' %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control form-control-lg' %>
+  </div>
+  <div class="form-outline mb-4">
+    <%= f.label :password, 'Senha', class: 'form-label' %><br />
+    <%= f.password_field :password, class: 'form-control form-control-lg' %>
+  </div>
+  <div class="d-grid gap-2">
+     <%= f.submit "Login", class: 'btn btn-dark btn-lg' %>
+  </div>
+<% end %>
