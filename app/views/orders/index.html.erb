@@ -46,7 +46,7 @@
   </div>
 </div>
 
-<table class="table table-hover">
+<table class="table table-hover table-responsive ">
   <thead>
     <tr>
       <th>Solicitante</th>
@@ -54,8 +54,6 @@
       <th>Fornecedor</th>
       <th>Finalidade</th>
       <th>Solicitação</th>
-      <th>Vencimento</th>
-      <th>Valor</th>
       <th>Status</th>
       <th>&nbsp;</th>
     </tr>
@@ -69,8 +67,6 @@
         <td><%= order.supplier.name %></td>
         <td><div class="text-truncate" style="max-width: 300px"><%= order.note %></div></td>
         <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
-        <td><%= order.due_date.strftime('%d/%m/%Y') %></td>
-        <td><%= number_to_currency(order.price, unit: 'R$ ', separator: ',', delimiter: '.')  %></td>
         <td>
           <% if order.requested? %>
             <span class="badge text-bg-secondary">Solicitado</span>
