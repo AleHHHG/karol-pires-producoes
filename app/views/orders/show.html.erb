@@ -63,8 +63,8 @@
 		    <p><b>Valor:</b> <%= number_to_currency(@order.price, unit: 'R$ ', separator: ',', delimiter: '.') %></p>
 		    <p><b>Criado em:</b> <%= @order.created_at.strftime('%d/%m/%Y') %></p>
 		    <p><b>Data de vencimento:</b> <%= @order.due_date.strftime('%d/%m/%Y') %></p>
-		    <p><b>Finalidade:</b> <%= @order.goal %></p>
-		    <p><b>Observação:</b> <%= @order.note %></p>
+		    <p><b>Finalidade:</b> <%= text_with_breackline(@order.goal) %></p>
+		    <p><b>Observação:</b> <%= text_with_breackline(@order.note) %></p>
 		  </div>
 		</div>
 	</div>
