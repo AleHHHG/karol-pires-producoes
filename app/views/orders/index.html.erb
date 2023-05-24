@@ -66,7 +66,7 @@
           <td><%= order.owner.name %></td>
           <td><%= order.project.name %></td>
           <td><%= order.supplier.name %></td>
-          <td><div class="text-truncate" style="max-width: 300px"><%= order.note %></div></td>
+          <td><div class="text-truncate" style="max-width: 300px"><%= text_with_breackline(order.goal) %></div></td>
           <td><%= order.created_at.strftime('%d/%m/%Y') %></td>
           <td>
             <% if order.requested? %>
@@ -79,13 +79,14 @@
           </td>
           <td>
             <div class="btn-group" role="group">
-              <button type="button" class="btn dropdown-toggle btn-md" data-bs-toggle="dropdown" aria-expanded="false">
+              <button type="button" class="btn dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
                 Opções
               </button>
               <ul class="dropdown-menu">
                 <li><%= link_to 'Detalhes', order_path(order), class: 'dropdown-item' %></li>
                 <li><%= link_to 'Editar', edit_order_path(order), class: 'dropdown-item' %></li>
-                <li><%= link_to 'Deletar', order, method: :delete, data: { confirm: 'Are you sure?' }, class: 'dropdown-item' %></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><%= button_to 'Deletar', order, method: :delete, class: 'dropdown-item text-danger' %></li>
               </ul>
             </div>
           </td>
