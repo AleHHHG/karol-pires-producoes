@@ -11,37 +11,49 @@
     </div>
   <% end %>
 
-  <%= form.label :owner, 'Solicitante', class: 'form-label' %>
-  <%= select :order, :owner_id, Owner.all.collect { |p| [ p.name, p.id ] }, { prompt: 'Selecione o solicitante' }, { class: 'form-select' }  %>
-  <br/>
+  <div class="row">
+    <div class="col">
+      <%= form.label :owner, 'Solicitante', class: 'form-label' %>
+      <%= select :order, :owner_id, Owner.all.collect { |p| [ p.name, p.id ] }, { prompt: 'Selecione o solicitante' }, { class: 'form-select' }  %>
+    </div>
+    <div class="col">
+      <%= form.label :project, 'Projeto', class: 'form-label' %>
+      <%= select :order, :project_id, Project.all.collect { |p| [ p.name, p.id ] }, { prompt: 'Selecione o projeto' }, { class: 'form-select' }  %>
+    </div>
+    <div class="col">
+      <%= form.label :supplier, 'Fornecedor', class: 'form-label' %>
+      <%= select :order, :supplier_id, Supplier.all.collect { |p| [ p.name, p.id ] }, { prompt: 'Selecione o fornecedor' }, { class: 'form-select' }  %>
+    </div>
+    <div class="col">
+      <%= form.label :approver, 'Aprovador', class: 'form-label' %>
+      <%= select :order, :approver_id, Approver.all.collect { |p| [ p.name, p.id ] }, { prompt: 'Selecione o Aprovador' }, { class: 'form-select' }  %>
+    </div>
+  </div>
+  <br clear="all">
 
-  <%= form.label :project, 'Projeto', class: 'form-label' %>
-  <%= select :order, :project_id, Project.all.collect { |p| [ p.name, p.id ] }, { prompt: 'Selecione o projeto' }, { class: 'form-select' }  %>
-  <br/>
+  <div class="row">
+    <div class="col">
+      <%= form.label :price, 'Valor', class: 'form-label' %>
+      <%= form.text_field :price, class: 'form-control' %>
+    </div>
+    <div class="col">
+      <%= form.label :due_date, 'Vencimento', class: 'form-label' %>
+      <%= form.date_field :due_date, class: 'form-control'  %>
+    </div>
+  </div>
+  <br clear="all">
 
-  <%= form.label :supplier, 'Fornecedor', class: 'form-label' %>
-  <%= select :order, :supplier_id, Supplier.all.collect { |p| [ p.name, p.id ] }, { prompt: 'Selecione o fornecedor' }, { class: 'form-select' }  %>
-  <br/>
-
-  <%= form.label :approver, 'Aprovador', class: 'form-label' %>
-  <%= select :order, :approver_id, Approver.all.collect { |p| [ p.name, p.id ] }, { prompt: 'Selecione o Aprovador' }, { class: 'form-select' }  %>
-  <br/>
-
-  <%= form.label :goal, 'Finalidade', class: 'form-label' %>
-  <%= form.text_area :goal, size: "70x5", class: 'form-control'  %>
-  <br/>
-
-  <%= form.label :note, 'Observação', class: 'form-label' %>
-  <%= form.text_area :note, size: "70x5", class: 'form-control'  %>
-  <br/>
-
-  <%= form.label :price, 'Valor', class: 'form-label' %>
-  <%= form.text_field :price, class: 'form-control' %>
-  <br/>
-
-  <%= form.label :due_date, 'Vencimento', class: 'form-label' %>
-  <%= form.date_field :due_date, class: 'form-control'  %>
-  <br/>
+  <div class="row">
+    <div class="col">
+      <%= form.label :goal, 'Finalidade', class: 'form-label' %>
+      <%= form.text_area :goal, size: "90x8", class: 'form-control'  %>
+    </div>
+    <div class="col">
+      <%= form.label :note, 'Observação', class: 'form-label' %>
+      <%= form.text_area :note, size: "90x8", class: 'form-control'  %>
+    </div>
+  </div>
+  <br clear="all">
 
   <% if order.new_record? %>
     <%= form.hidden_field :status, value: 'requested' %>
@@ -50,6 +62,6 @@
     <%= select :order, :status, [['Solicitado', 'requested'], ['Em andamento', 'in_progress'], ['Concluído', 'done']], {}, class: 'form-select' %>
   <% end %>
 
-  <%= form.submit 'Salvar', class: 'btn btn-primary mt-3' %>
+  <%= form.submit 'Salvar', class: 'btn btn-primary mt-3 btn-lg float-end' %>
 <% end %>
 <br clear="all"/>

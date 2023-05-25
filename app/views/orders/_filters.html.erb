@@ -1,0 +1,42 @@
+<div class="accordion mb-5">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#filters">
+        Filtros
+      </button>
+    </h2>
+    <div id="filters" class="accordion-collapse collapse show">
+      <div class="accordion-body bg-light">
+        <%= form_with url: orders_path, method: :get do |form| %>
+          <div class="row">
+            <div class="col">
+              <%= form.label "Solicitante", class: 'form-label' %>
+              <%= form.select :by_owner, Owner.all.collect { |p| [ p.name, p.id ] }, { include_blank: 'Todos', selected: current_scopes[:by_owner] }, { class: 'form-select' }  %>
+            </div>
+            <div class="col">
+              <%= form.label :project, 'Projeto', class: 'form-label' %>
+              <%= form.select :by_project, Project.all.collect { |p| [ p.name, p.id ] }, { include_blank: 'Todos', selected: current_scopes[:by_project] }, { class: 'form-select' }  %>
+            </div>
+            <div class="col">
+              <%= form.label :supplier, 'Fornecedor', class: 'form-label' %>
+              <%= form.select :by_supplier, Supplier.all.collect { |p| [ p.name, p.id ] }, { include_blank: 'Todos', selected: current_scopes[:by_supplier] }, { class: 'form-select' }  %>
+            </div>
+          </div>
+          <br/>
+          <div class="row">
+            <div class="col">
+                <%= form.label :approver, 'Aprovador', class: 'form-label' %>
+                <%= form.select :by_approver, Approver.all.collect { |p| [ p.name, p.id ] }, { include_blank: 'Todos', selected: current_scopes[:by_approver] }, { class: 'form-select' }  %>
+            </div>
+            <div class="col">
+              <%= form.label :status, 'Status', class: 'form-label' %>
+              <%= form.select :by_status, [['Solicatado', 'requested'], ['Em andamento', 'in_progress'], ['Concluído', 'done']], {  include_blank: 'Todos', selected: current_scopes[:by_status] }, { class: 'form-select' }  %>
+            </div>
+          </div>
+          <%= form.submit "Pesquisar", class: 'btn btn-dark mt-4 float-end' %>
+          <br clear="all"/>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
