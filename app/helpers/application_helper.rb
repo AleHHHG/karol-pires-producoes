@@ -8,4 +8,8 @@ module ApplicationHelper
   def text_with_breackline(text)
     text.gsub(/\n/, '<br />').html_safe
   end
+
+  def format_date(date, format: '%d/%m/%Y')
+    date.strftime(format)
+  end
 end

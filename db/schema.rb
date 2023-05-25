@@ -14,11 +14,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_25_192157) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "Orders_People", id: false, force: :cascade do |t|
-    t.bigint "Order_id", null: false
-    t.bigint "Person_id", null: false
-  end
-
   create_table "approvers", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -41,6 +36,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_25_192157) do
     t.index ["owner_id"], name: "index_orders_on_owner_id"
     t.index ["project_id"], name: "index_orders_on_project_id"
     t.index ["supplier_id"], name: "index_orders_on_supplier_id"
+  end
+
+  create_table "orders_people", id: false, force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "person_id", null: false
   end
 
   create_table "owners", force: :cascade do |t|

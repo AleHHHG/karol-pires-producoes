@@ -62,6 +62,21 @@
     <%= select :order, :status, [['Solicitado', 'requested'], ['Em andamento', 'in_progress'], ['Concluído', 'done']], {}, class: 'form-select' %>
   <% end %>
 
+  <br clear="all">
+
+
+  <h5 class="card-title mt-2 mb-4">Colaboradores</h5>
+
+  <div class="row">
+    <%= form.collection_check_boxes :person_ids, Person.order(:name), :id, :name, { class: } do |b| %>
+      <div class="col">
+        <div class="form-check">
+          <%=  b.check_box(class: 'form-check-input') %>
+          <%=  b.label(class: 'form-check-label')  %>
+        </div>
+      </div>
+    <% end %>
+  </div>
   <%= form.submit 'Salvar', class: 'btn btn-primary mt-3 btn-lg float-end' %>
 <% end %>
 <br clear="all"/>

@@ -65,7 +65,32 @@
 		    <p><b>Data de vencimento:</b> <%= @order.due_date.strftime('%d/%m/%Y') %></p>
 		    <p><b>Finalidade:</b> <%= text_with_breackline(@order.goal) %></p>
 		    <p><b>Observação:</b> <%= text_with_breackline(@order.note) %></p>
+		    <br/>
+		    <% if @order.people.present? %>
+		    	<h3>Colaboradores</h3>
+		    	<table class="table table-hover">
+		    		<thead>
+		    			<tr>
+		    				<th>Nome</th>
+		    				<th>RG</th>
+		    				<th>CPF</th>
+		    				<th>Data de nascimento</th>
+		    			</tr>
+		    		</thead>
+		    		<tbody>
+		    			<% @order.people.each do |person| %>
+		    			<tr>
+		    				<td><%= person.name %></td>
+		    				<td><%= person.rg %></td>
+		    				<td><%= person.cpf %></td>
+		    				<td><%= format_date(person.date_of_birth) %></td>
+		    			</tr>
+		    			<% end %>
+		    		</tbody>
+		    	</table>
+		    <% end %>
 		  </div>
+
 		</div>
 	</div>
 </div>
