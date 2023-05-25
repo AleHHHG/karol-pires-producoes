@@ -10,9 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_18_191354) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_25_192157) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "Orders_People", id: false, force: :cascade do |t|
+    t.bigint "Order_id", null: false
+    t.bigint "Person_id", null: false
+  end
 
   create_table "approvers", force: :cascade do |t|
     t.string "name"
@@ -42,6 +47,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_18_191354) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone_number"
+    t.string "rg"
+    t.string "cpf"
+    t.string "role"
+    t.date "date_of_birth"
+    t.string "zip_code"
+    t.string "country"
+    t.string "state"
+    t.string "city"
+    t.string "street"
+    t.string "neighborhood"
+    t.string "complement"
+    t.integer "number"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_people_on_project_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -89,4 +116,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_18_191354) do
   add_foreign_key "orders", "owners"
   add_foreign_key "orders", "projects"
   add_foreign_key "orders", "suppliers"
+  add_foreign_key "people", "projects"
 end
