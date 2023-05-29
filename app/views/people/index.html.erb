@@ -1,7 +1,11 @@
 <h2 class="mt-5 mb-5">
   Colaboradores
-  <%= link_icon(new_person_path, 'btn btn-primary float-end ms-1', 'fa-solid fa-plus', 'Novo Colaborador' ) %>
-  <%= link_icon(new_person_path, 'btn btn-success float-end', 'fa-solid fa-upload', 'Importar Arquivo' ) %> 
+  <div class="float-end">
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#importFile">
+      <i class="fa-solid fa-upload"></i> Importar Arquivo
+    </button>
+    <%= link_icon(new_person_path, 'btn btn-primary', 'fa-solid fa-plus', 'Novo Colaborador' ) %>
+  </div>
 </h2>
 
 <table class="table table-hover">
@@ -36,4 +40,27 @@
   </tbody>
 </table>
 
-<br>
+<div class="modal fade" id="importFile">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Importar arquivo</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= form_with url: import_file_people_path, method: :post do |form| %>
+          <div class="mb-3">
+            <%= form.label :project, 'Projeto', class: 'form-label' %>
+            <%= form.select :project_id, Project.all.collect { |p| [ p.name, p.id ] }, { }, { class: 'form-select' }  %>
+          </div>
+          <div class="mb-3">
+            <%= form.label :file, 'Arquivo', class: 'form-label' %>
+            <%= form.file_field :file, class: 'form-control' %>
+          </div>
+          <%= form.submit "Importar", class: 'btn btn-dark mt-4 float-end' %>
+          <br clear="all">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

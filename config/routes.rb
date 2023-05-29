@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :suppliers
   resources :owners
-  resources :people
+  resources :people do
+     post 'import_file', on: :collection
+  end
 end

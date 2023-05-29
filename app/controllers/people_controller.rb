@@ -60,6 +60,14 @@ class PeopleController < ApplicationController
     end
   end
 
+  def import_file
+    ImportPeopleService.new(params[:project_id], params[:file]).execute
+    respond_to do |format|
+      format.html { redirect_to people_url, notice: 'Arquivo importado com sucesso.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_person
