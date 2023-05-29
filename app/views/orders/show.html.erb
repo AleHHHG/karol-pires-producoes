@@ -1,97 +1,108 @@
-<h2 class="mt-5 mb-4">
-	<% if @order.requested? %>
-		<span class="badge text-bg-secondary">Solicitado</span>
-	<% elsif @order.in_progress? %>
-	 	<span class="badge text-bg-info">Em andamento</span>
-	<% else %>
-		<span class="badge text-bg-success">Concluído</span>
-	<% end %>
-	<%= link_icon(orders_path, 'btn btn-light float-end', 'fa-regular fa-circle-left', 'Voltar' ) %>
-</h2>
-<div class="row">
-	<div class="col">
-		<div class="card">
-		  <div class="card-body">
-		    <h5 class="card-title">Projeto</h5>
-	     	<p><b>Nome:</b> <%= @order.project.name %></p>
-	     	<p><b>E-mail:</b> <%= @order.project.email %></p>
-	     	<p><b>Telefone:</b> <%= @order.project.phone %></p>
-	     	<a data-bs-toggle="collapse" href="#projectDataBank">
-			    Dados Bancários
-		  	</a>
-		  	<div class="collapse" id="projectDataBank">
-		  		<br/>
-			  <div class="card text-bg-secondary card-body">
-			    <p><b>Banco:</b> <%= @order.project.bank %></p>
-		    	<p><b>Agencia:</b> <%= @order.project.ag %></p>
-		    	<p><b>Conta:</b> <%= @order.project.cc %></p>
-		    	<p><b>Pix:</b> <%= @order.project.pix %></p>
+<div class="no-print">
+	<h2 class="mt-1 mb-2">
+		Pedido #<%= @order.id %>
+		<div class="float-end">
+			<a href="javascript:;" class="btn btn-light" onclick="printDiv('printableArea')">
+				<i class="fa-solid fa-print"></i> Imprimir
+			</a>
+			<%= link_icon(orders_path, 'btn btn-light', 'fa-regular fa-circle-left', 'Voltar' ) %>
+		</div>
+	</h2>
+	<h4 class="mb-3">
+		<% if @order.requested? %>
+			<span class="badge text-bg-secondary">Solicitado</span>
+		<% elsif @order.in_progress? %>
+		 	<span class="badge text-bg-info">Em andamento</span>
+		<% else %>
+			<span class="badge text-bg-success">Concluído</span>
+		<% end %>
+	</h4>
+	<div class="row">
+		<div class="col">
+			<div class="card">
+			  <div class="card-body">
+			    <h5 class="card-title">Projeto</h5>
+		     	<p><b>Nome:</b> <%= @order.project.name %></p>
+		     	<p><b>E-mail:</b> <%= @order.project.email %></p>
+		     	<p><b>Telefone:</b> <%= @order.project.phone %></p>
+		     	<a data-bs-toggle="collapse" href="#projectDataBank">
+				    Dados Bancários
+			  	</a>
+			  	<div class="collapse" id="projectDataBank">
+			  		<br/>
+				  <div class="card text-bg-secondary card-body">
+				    <p><b>Banco:</b> <%= @order.project.bank %></p>
+			    	<p><b>Agencia:</b> <%= @order.project.ag %></p>
+			    	<p><b>Conta:</b> <%= @order.project.cc %></p>
+			    	<p><b>Pix:</b> <%= @order.project.pix %></p>
+				  </div>
+				</div>
 			  </div>
 			</div>
-		  </div>
-		</div>
-		<br/>
-		<div class="card">
-		  <div class="card-body">
-		    <h5 class="card-title">Fornecedor</h5>
-		    <p><b>Nome:</b> <%= @order.supplier.name %></p>
-	     	<p><b>E-mail:</b> <%= @order.supplier.email %></p>
-	     	<p><b>Telefone:</b> <%= @order.supplier.phone %></p>
-	     	<a data-bs-toggle="collapse" href="#supplierDataBank">
-			    Dados Bancários
-		  	</a>
-		  	<div class="collapse" id="supplierDataBank">
-		  		<br/>
-			  <div class="card text-bg-secondary card-body">
-			    <p><b>Banco:</b> <%= @order.supplier.bank %></p>
-		    	<p><b>Agencia:</b> <%= @order.supplier.ag %></p>
-		    	<p><b>Conta:</b> <%= @order.supplier.cc %></p>
-		    	<p><b>Pix:</b> <%= @order.supplier.pix %></p>
+			<br/>
+			<div class="card">
+			  <div class="card-body">
+			    <h5 class="card-title">Fornecedor</h5>
+			    <p><b>Nome:</b> <%= @order.supplier.name %></p>
+		     	<p><b>E-mail:</b> <%= @order.supplier.email %></p>
+		     	<p><b>Telefone:</b> <%= @order.supplier.phone %></p>
+		     	<a data-bs-toggle="collapse" href="#supplierDataBank">
+				    Dados Bancários
+			  	</a>
+			  	<div class="collapse" id="supplierDataBank">
+			  		<br/>
+				  <div class="card text-bg-secondary card-body">
+				    <p><b>Banco:</b> <%= @order.supplier.bank %></p>
+			    	<p><b>Agencia:</b> <%= @order.supplier.ag %></p>
+			    	<p><b>Conta:</b> <%= @order.supplier.cc %></p>
+			    	<p><b>Pix:</b> <%= @order.supplier.pix %></p>
+				  </div>
+				</div>
 			  </div>
 			</div>
-		  </div>
 		</div>
-	</div>
-	<div class="col-8">
-		<div class="card border-0">
-		  <div class="card-body">
-		    <h3 class="card-title mb-4">
-		    	Informações gerais
-		    </h3>
-		    <p><b>Solicitante:</b> <%= @order.owner.name %></p>
-		    <p><b>Aprovado por:</b> <%= @order.approver.name %></p>
-		    <p><b>Valor:</b> <%= number_to_currency(@order.price, unit: 'R$ ', separator: ',', delimiter: '.') %></p>
-		    <p><b>Criado em:</b> <%= @order.created_at.strftime('%d/%m/%Y') %></p>
-		    <p><b>Data de vencimento:</b> <%= @order.due_date.strftime('%d/%m/%Y') %></p>
-		    <p><b>Finalidade:</b> <%= text_with_breackline(@order.goal) %></p>
-		    <p><b>Observação:</b> <%= text_with_breackline(@order.note) %></p>
-		    <br/>
-		    <% if @order.people.present? %>
-		    	<h3>Colaboradores</h3>
-		    	<table class="table table-hover">
-		    		<thead>
-		    			<tr>
-		    				<th>Nome</th>
-		    				<th>RG</th>
-		    				<th>CPF</th>
-		    				<th>Data de nascimento</th>
-		    			</tr>
-		    		</thead>
-		    		<tbody>
-		    			<% @order.people.each do |person| %>
-		    			<tr>
-		    				<td><%= person.name %></td>
-		    				<td><%= person.rg %></td>
-		    				<td><%= person.cpf %></td>
-		    				<td><%= format_date(person.date_of_birth) %></td>
-		    			</tr>
-		    			<% end %>
-		    		</tbody>
-		    	</table>
-		    <% end %>
-		  </div>
+		<div class="col-8">
+			<div class="card border-0">
+			  <div class="card-body">
+			    <h3 class="card-title mb-4">
+			    	Informações gerais
+			    </h3>
+			    <p><b>Solicitante:</b> <%= @order.owner.name %></p>
+			    <p><b>Aprovado por:</b> <%= @order.approver.name %></p>
+			    <p><b>Valor:</b> <%= number_to_currency(@order.price, unit: 'R$ ', separator: ',', delimiter: '.') %></p>
+			    <p><b>Criado em:</b> <%= @order.created_at.strftime('%d/%m/%Y') %></p>
+			    <p><b>Data de vencimento:</b> <%= @order.due_date.strftime('%d/%m/%Y') %></p>
+			    <p><b>Finalidade:</b> <%= text_with_breackline(@order.goal) %></p>
+			    <p><b>Observação:</b> <%= text_with_breackline(@order.note) %></p>
+			    <br/>
+			    <% if @order.people.present? %>
+			    	<h3>Colaboradores</h3>
+			    	<table class="table table-hover">
+			    		<thead>
+			    			<tr>
+			    				<th>Nome</th>
+			    				<th>RG</th>
+			    				<th>CPF</th>
+			    				<th>Data de nascimento</th>
+			    			</tr>
+			    		</thead>
+			    		<tbody>
+			    			<% @order.people.each do |person| %>
+			    			<tr>
+			    				<td><%= person.name %></td>
+			    				<td><%= person.rg %></td>
+			    				<td><%= person.cpf %></td>
+			    				<td><%= format_date(person.date_of_birth) %></td>
+			    			</tr>
+			    			<% end %>
+			    		</tbody>
+			    	</table>
+			    <% end %>
+			  </div>
 
+			</div>
 		</div>
 	</div>
 </div>
-<br clear="all"/>
+
+<%= render 'print' %>

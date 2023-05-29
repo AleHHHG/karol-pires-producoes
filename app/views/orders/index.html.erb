@@ -9,6 +9,7 @@
   <table class="table table-hover">
     <thead>
       <tr>
+        <th>Número</th>
         <th>Solicitante</th>
         <th>Projeto</th>
         <th>Fornecedor</th>
@@ -22,6 +23,7 @@
     <tbody>
       <% @orders.each do |order| %>
         <tr>
+          <td><%= order.id %></td>
           <td><%= order.owner.name %></td>
           <td><%= order.project.name %></td>
           <td><%= order.supplier.name %></td>

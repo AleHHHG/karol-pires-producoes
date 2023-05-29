@@ -1,0 +1,42 @@
+<div id="printableArea" style="display: none">
+    <div class="card mt-3">
+      <div class="card-body">
+        <h3 class="card-title mb-4">
+            Informações gerais
+        </h3>
+        <b>Projeto:</b> <%= @order.project.name %><br/>
+        <b>Solicitante:</b> <%= @order.owner.name %><br/>
+        <b>Aprovado por:</b> <%= @order.approver.name %><br/>
+        <b>Valor:</b> <%= number_to_currency(@order.price, unit: 'R$ ', separator: ',', delimiter: '.') %><br/>
+        <b>Criado em:</b> <%= @order.created_at.strftime('%d/%m/%Y') %><br/>
+        <b>Data de vencimento:</b> <%= @order.due_date.strftime('%d/%m/%Y') %><br/>
+        <b>Finalidade:</b> <%= text_with_breackline(@order.goal) %><br/>
+        <b>Observação:</b> <%= text_with_breackline(@order.note) %><br/>
+        <br/>
+        <% if @order.people.present? %>
+            <h3>Colaboradores</h3>
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>RG</th>
+                        <th>CPF</th>
+                        <th>Data de nascimento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @order.people.each do |person| %>
+                    <tr>
+                        <td><%= person.name %></td>
+                        <td><%= person.rg %></td>
+                        <td><%= person.cpf %></td>
+                        <td><%= format_date(person.date_of_birth) %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        <% end %>
+      </div>
+    </div>
+</div>
+<br clear="all"/>
