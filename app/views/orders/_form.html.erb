@@ -18,7 +18,7 @@
     </div>
     <div class="col">
       <%= form.label :project, 'Projeto', class: 'form-label' %>
-      <%= select :order, :project_id, Project.all.collect { |p| [ p.name, p.id ] }, { prompt: 'Selecione o projeto' }, { class: 'form-select' }  %>
+      <%= select :order, :project_id, Project.all.collect { |p| [ p.name, p.id ] }, { prompt: 'Selecione o projeto' }, { class: 'form-select project-select' }  %>
     </div>
     <div class="col">
       <%= form.label :supplier, 'Fornecedor', class: 'form-label' %>
@@ -64,19 +64,44 @@
 
   <br clear="all">
 
+  <div class="project-people-content" style="display: none">
+    <h5 class="card-title mt-2 mb-4">Colaboradores</h5>
 
-  <h5 class="card-title mt-2 mb-4">Colaboradores</h5>
-
-  <div class="row">
-    <%= form.collection_check_boxes :person_ids, Person.order(:name), :id, :name, { class: } do |b| %>
-      <div class="col">
-        <div class="form-check">
-          <%=  b.check_box(class: 'form-check-input') %>
-          <%=  b.label(class: 'form-check-label')  %>
+     <div class="row">
+      <% Person.order(:name).each do |person| %>
+        <div class="col-md-4">
+          <div class="form-check project-people-item" data-project-id="<%= person.project.id %>" style="display: none">
+              <%= form.check_box :person_ids, { multiple: true, class: 'form-check-input' }, person.id, nil %>
+              <%= form.label :person_ids, person.name, class: 'form-check-label' %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
+  <br clear="all"/>
   <%= form.submit 'Salvar', class: 'btn btn-primary mt-3 btn-lg float-end' %>
 <% end %>
 <br clear="all"/>
+
+<% content_for :script do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      if($('.project-select').val() != ""){
+        showProjectPeople($('.project-select').val());
+      }
+      $('.project-select').on('change',function(){
+        project_id = $(this).val();
+        showProjectPeople($(this).val());
+      });
+    });
+
+    function showProjectPeople(project_id){
+      if($("div[data-project-id='" + project_id +"']").length > 0){
+        $('.project-people-content').show();
+        $("div[data-project-id='" + project_id +"']").show();
+      }else{
+        $('.project-people-content').hide();
+      }
+    }
+  </script>
+<% end %>
