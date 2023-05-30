@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[ show edit update destroy ]
+  before_action :set_order, only: %i[ show edit update destroy budget_request]
   has_scope :by_project
   has_scope :by_supplier
   has_scope :by_owner
@@ -55,7 +55,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  # DELETE /orders/1 or /orders/1.json
+  # GET /orders/1 or /orders/1.json
   def destroy
     @order.destroy
 
@@ -63,6 +63,16 @@ class OrdersController < ApplicationController
       format.html { redirect_to orders_url, notice: "Pedido deletado com sucesso." }
       format.json { head :no_content }
     end
+  end
+
+  # POST /orders/1/budget_request
+  def budget_request
+    if @order.supplier.email.blank?
+      flash[:error] = "Não foi possível enviar o orçamento: Email inválido "
+      redirect_to order_path(@order)
+    end
+    OrderMailer.with(order: @order).budget_request.deliver_now
+    redirect_to order_path(@order), notice: 'Solicitação de orçamento enviada com sucesso.'
   end
 
   private

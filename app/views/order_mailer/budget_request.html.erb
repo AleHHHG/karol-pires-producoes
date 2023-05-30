@@ -1,0 +1,30 @@
+<p style="font-size: 20px;text-align: center;">Olá, <b><%= @order.supplier.name %>!</b></p>
+
+<p>Projeto: <b><%= @order.project.name %></b></p>
+
+<p><%= text_with_breackline(@order.note) %></p>
+
+<% if @order.people.present? %>
+  <p style="font-size: 16px;"><b>Equipe:</b></p>
+
+  <table style="width: 100%; border:1px solid #efefef;padding: 20px">
+    <thead style="text-align: left;">
+      <tr>
+        <th>Nome</th>
+        <th>RG</th>
+        <th>CPF</th>
+        <th>Data de nascimento</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.people.each do |person| %>
+        <tr>
+          <td><%= person.name %></td>
+          <td><%= person.rg %></td>
+          <td><%= person.cpf %></td>
+          <td><%= format_date(person.date_of_birth) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

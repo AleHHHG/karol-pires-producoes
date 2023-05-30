@@ -19,7 +19,7 @@
     <div class="container bg-white app-container shadow-sm p-3 mb-5 rounded">
       <div class="app-base">
         <% flash.each do |name, msg| %>
-           <div class="alert alert-<%= name == 'error' ? 'danger' : 'success' %> mt-5" role="alert">
+           <div class="alert alert-<%= name == 'error' ? 'danger' : 'success' %> mt-3" role="alert">
               <%= msg %>
             </div>
           <% end %>
