@@ -52,11 +52,12 @@ class PeopleController < ApplicationController
 
   # DELETE /people/1 or /people/1.json
   def destroy
-    @person.destroy
-
-    respond_to do |format|
-      format.html { redirect_to people_url, notice: 'Colaborador deletado com sucesso.' }
-      format.json { head :no_content }
+    if @person.orders.present?
+      flash[:error] =  'Não foi possivel deletar: Colaborador vinculado a um ou mais pedidos'
+      redirect_to people_url
+    else
+      @person.destroy
+      redirect_to people_url, notice: 'Colaborador deletado com sucesso.'
     end
   end
 

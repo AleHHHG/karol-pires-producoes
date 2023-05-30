@@ -52,11 +52,12 @@ class ApproversController < ApplicationController
 
   # DELETE /approvers/1 or /approvers/1.json
   def destroy
-    @approver.destroy
-
-    respond_to do |format|
-      format.html { redirect_to approvers_url, notice: "Approvador deletado com sucesso." }
-      format.json { head :no_content }
+    if @approver.orders.present?
+      flash[:error] =  'Não foi possivel deletar: Aprovador vinculado a um ou mais pedidos'
+      redirect_to approvers_url
+    else
+      @approver.destroy
+      redirect_to approvers_url, notice: 'Approvador deletado com sucesso.'
     end
   end
 

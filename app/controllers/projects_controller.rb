@@ -52,11 +52,12 @@ class ProjectsController < ApplicationController
 
   # DELETE /projects/1 or /projects/1.json
   def destroy
-    @project.destroy
-
-    respond_to do |format|
-      format.html { redirect_to projects_url, notice: "Projeto deletado com sucesso." }
-      format.json { head :no_content }
+    if @project.orders.present?
+      flash[:error] =  'Não foi possivel deletar: Projeto vinculado a um ou mais pedidos'
+      redirect_to projects_url
+    else
+      @project.destroy
+      redirect_to projects_url, notice: 'Projeto deletado com sucesso.'
     end
   end
 

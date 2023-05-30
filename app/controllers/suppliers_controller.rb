@@ -52,11 +52,12 @@ class SuppliersController < ApplicationController
 
   # DELETE /suppliers/1 or /suppliers/1.json
   def destroy
-    @supplier.destroy
-
-    respond_to do |format|
-      format.html { redirect_to suppliers_url, notice: "Fornecedor deletado com sucesso" }
-      format.json { head :no_content }
+    if @supplier.orders.present?
+      flash[:error] =  'Não foi possivel deletar: Forncedor vinculado a um ou mais pedidos'
+      redirect_to suppliers_url
+    else
+      @supplier.destroy
+      redirect_to suppliers_url, notice: 'Fornecedor deletado com sucesso.'
     end
   end
 

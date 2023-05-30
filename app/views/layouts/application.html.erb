@@ -18,11 +18,11 @@
     <%= render 'layouts/navbar' %>
     <div class="container bg-white app-container shadow-sm p-3 mb-5 rounded">
       <div class="app-base">
-        <% if notice %>
-          <div class="alert alert-success mt-5" role="alert">
-           <%= notice %>
-          </div>
-        <% end %>
+        <% flash.each do |name, msg| %>
+           <div class="alert alert-<%= name == 'error' ? 'danger' : 'success' %> mt-5" role="alert">
+              <%= msg %>
+            </div>
+          <% end %>
         <%= yield %>
       </div>
     </div>

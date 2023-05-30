@@ -52,11 +52,12 @@ class OwnersController < ApplicationController
 
   # DELETE /owners/1 or /owners/1.json
   def destroy
-    @owner.destroy
-
-    respond_to do |format|
-      format.html { redirect_to owners_url, notice: "Solicitante deletado com sucesso." }
-      format.json { head :no_content }
+    if @owner.orders.present?
+      flash[:error] =  'Não foi possivel deletar: Solicitante vinculado a um ou mais pedidos'
+      redirect_to owners_url
+    else
+      @owner.destroy
+      redirect_to owners_url, notice: 'Solicitante deletado com sucesso.'
     end
   end
 
