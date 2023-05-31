@@ -14,7 +14,7 @@
 	<% elsif @order.in_progress? %>
 	 	<span class="badge text-bg-info">Em andamento</span>
 	<% elsif @order.canceled? %>
-	 	<span class="badge text-bg-info">Cancelado</span>
+	 	<span class="badge text-bg-danger">Cancelado</span>
 	<% else %>
 		<span class="badge text-bg-success">Concluído</span>
 	<% end %>
