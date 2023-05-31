@@ -34,6 +34,8 @@
               <span class="badge text-bg-secondary">Solicitado</span>
             <% elsif order.in_progress? %>
               <span class="badge text-bg-info">Em andamento</span>
+            <% elsif order.canceled? %>
+              <span class="badge text-bg-danger">Cancelado</span>
             <% else %>
               <span class="badge text-bg-success">Concluído</span>
             <% end %>

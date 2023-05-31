@@ -15,6 +15,7 @@ class Order < ApplicationRecord
   enum status: {
     requested: 'Solicitado',
     in_progress: 'Em andamento',
+    canceled: 'Cancelado',
     done: 'Concluído'
   }
 end
