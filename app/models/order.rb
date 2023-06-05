@@ -16,6 +16,7 @@ class Order < ApplicationRecord
     requested: 'Solicitado',
     in_progress: 'Em andamento',
     canceled: 'Cancelado',
-    done: 'Concluído'
+    done: 'Concluído',
+    billed: 'Faturado'
   }
 end

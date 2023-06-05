@@ -59,7 +59,7 @@
     <%= form.hidden_field :status, value: 'requested' %>
   <% else %>
     <%= form.label :status, 'Status', class: 'form-label' %>
-    <%= select :order, :status, [['Solicitado', 'requested'], ['Em andamento', 'in_progress'], ['Cancelado', 'canceled'], ['Concluído', 'done']], {}, class: 'form-select' %>
+    <%= select :order, :status, [['Solicitado', 'requested'], ['Em andamento', 'in_progress'], ['Cancelado', 'canceled'], ['Concluído', 'done'], ['Faturado', 'billed']], {}, class: 'form-select' %>
   <% end %>
 
   <br clear="all">
