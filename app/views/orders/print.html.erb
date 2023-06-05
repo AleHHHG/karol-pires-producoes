@@ -1,0 +1,65 @@
+<h2 class="mt-4 mb-2" id="printButtons">
+    Pedido #<%= @order.id %>
+    <div class="float-end">
+        <a href="javascript:;" class="btn btn-light" id="printFinancial">
+            <i class="fa-solid fa-print"></i> Financeiro
+        </a>
+        <a href="javascript:;" class="btn btn-light" id="printOffice">
+            <i class="fa-solid fa-print"></i> Agências
+        </a>
+        <%= link_icon(order_path(@order), 'btn btn-light', 'fa-regular fa-circle-left', 'Voltar' ) %>
+    </div>
+</h2>
+<div class="card mt-3">
+  <div class="card-body">
+    <h3 class="card-title mb-4">
+        Informações gerais
+    </h3>
+    <b>Projeto:</b> <%= @order.project.name %><br/>
+    <b>Solicitante:</b> <%= @order.owner.name %><br/>
+    <b>Aprovado por:</b> <%= @order.approver.name %><br/>
+    <b>Valor:</b> <%= number_to_currency(@order.price, unit: 'R$ ', separator: ',', delimiter: '.') %><br/>
+    <b>Criado em:</b> <%= @order.created_at.strftime('%d/%m/%Y') %><br/>
+    <b>Data de vencimento:</b> <%= @order.due_date.strftime('%d/%m/%Y') %><br/>
+    <b>Finalidade:</b> <%= text_with_breackline(@order.goal) %><br/>
+    <b>Observação:</b> <%= text_with_breackline(@order.note) %><br/>
+    <br/>
+    <% if @order.people.present? %>
+        <h3>Equipe</h3>
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th class="office-collum">RG</th>
+                    <th class="office-collum">CPF</th>
+                    <th class="office-collum">Data Nasc.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @order.people.each do |person| %>
+                <tr>
+                    <td><%= person.name %></td>
+                    <td class="office-collum"><%= person.rg %></td>
+                    <td class="office-collum"><%= person.cpf %></td>
+                    <td class="office-collum"><%= format_date(person.date_of_birth) %></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    <% end %>
+  </div>
+</div>
+<% content_for :script do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#printFinancial').on('click',function(){
+        $('.office-collum').addClass('hideInprint');
+        window.print();
+      });
+      $('#printOffice').on('click',function(){
+        $('.office-collum').removeClass('hideInprint');
+        window.print();
+      })
+    });
+  </script>
+<% end %>

@@ -41,3 +41,12 @@
 .app-base{
 	padding: 0px 20px;
 }
+
+@media print {
+ #printButtons{
+ 	display: none;
+ }
+ .hideInprint{
+ 	display: none;
+ }
+}

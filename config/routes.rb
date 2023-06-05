@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :projects
   resources :orders do
      get 'budget_request', on: :member
+     get 'print', on: :member
   end
   resources :suppliers
   resources :owners

@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[ show edit update destroy budget_request]
+  before_action :set_order, only: %i[ show edit update destroy budget_request print]
   has_scope :by_project
   has_scope :by_supplier
   has_scope :by_owner
@@ -73,6 +73,11 @@ class OrdersController < ApplicationController
     end
     OrderMailer.with(order: @order).budget_request.deliver_now
     redirect_to order_path(@order), notice: 'Solicitação de orçamento enviada com sucesso.'
+  end
+
+  # GET /orders/1/print
+  def print
+    render layout: 'print'
   end
 
   private
