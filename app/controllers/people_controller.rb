@@ -1,10 +1,12 @@
 class PeopleController < ApplicationController
+  has_scope :by_project
+  has_scope :by_name
   before_action :set_person, only: %i[ show edit update destroy ]
 
   # GET /people or /people.json
   def index
     @page_title = 'Colaboradores'
-    @people = Person.all
+    @pagy, @people = pagy(apply_scopes(Person).all)
   end
 
   # GET /people/1 or /people/1.json

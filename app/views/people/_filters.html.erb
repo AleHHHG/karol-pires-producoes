@@ -1,0 +1,27 @@
+<div class="accordion mb-5">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#filters">
+        Filtros
+      </button>
+    </h2>
+    <div id="filters" class="accordion-collapse collapse show">
+      <div class="accordion-body bg-light">
+        <%= form_with url: people_path, method: :get do |form| %>
+          <div class="row">
+            <div class="col">
+              <%= form.label "Name", class: 'form-label' %>
+              <%= form.text_field :by_name, class: 'form-control', value: current_scopes[:by_name]   %>
+            </div>
+            <div class="col">
+              <%= form.label :project, 'Projeto', class: 'form-label' %>
+              <%= form.select :by_project, Project.all.collect { |p| [ p.name, p.id ] }, { include_blank: 'Todos', selected: current_scopes[:by_project] }, { class: 'form-select' }  %>
+            </div>
+          </div>
+          <%= form.submit "Pesquisar", class: 'btn btn-dark mt-4 float-end' %>
+          <br clear="all"/>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
