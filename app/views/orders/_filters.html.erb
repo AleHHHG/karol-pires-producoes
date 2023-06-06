@@ -1,11 +1,11 @@
 <div class="accordion mb-5">
   <div class="accordion-item">
     <h2 class="accordion-header">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#filters">
+      <button class="accordion-button <%= current_scopes.present? ? '' : 'collapsed'%>" type="button" data-bs-toggle="collapse" data-bs-target="#filters">
         Filtros
       </button>
     </h2>
-    <div id="filters" class="accordion-collapse collapse show">
+    <div id="filters" class="accordion-collapse collapse <%= current_scopes.present? ? 'show' : 'hide'%>">
       <div class="accordion-body bg-light">
         <%= form_with url: orders_path, method: :get do |form| %>
           <div class="row">
