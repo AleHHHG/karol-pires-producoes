@@ -11,6 +11,8 @@ class Order < ApplicationRecord
   scope :by_owner, -> owner { where(owner: owner) }
   scope :by_approver, -> approver { where(approver: approver) }
   scope :by_status, -> status { where(status: status) }
+  scope :by_period, -> started_at, ended_at { where(created_at: (started_at)..ended_at) }
+  scope :grouped_by_project, ->  { joins(:project).group('projects.id') }
 
   enum status: {
     requested: 'Solicitado',

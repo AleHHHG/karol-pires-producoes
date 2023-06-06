@@ -1,0 +1,95 @@
+<h2 class="mt-5 mb-4">
+	Dashboard - <small>Período de <%= format_date(@initial_date) %> a <%= format_date(@end_date) %></small>
+</h2>
+
+<div class="row">
+	<div class="col-md-12 col-lg-6 col-sm-12 mb-4">
+		<div class="card">
+		  <div class="card-body">
+		    <h5 class="card-title">Demanda por projeto</h5>
+		  	<canvas id="orderQtyByProject"></canvas>
+		  </div>
+		</div>
+	</div>
+	<div class="col-md-12 col-lg-6 col-sm-12 mb-4">
+		<div class="card">
+		  <div class="card-body">
+		    <h5 class="card-title">Custo por projeto</h5>
+		  	<canvas id="orderAmountByProject"></canvas>
+		  </div>
+		</div>
+	</div>
+</div>
+
+<% content_for :script do %>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script type="text/javascript">
+		const qtyByProject = document.getElementById('orderQtyByProject');
+
+		new Chart(qtyByProject, {
+			type: 'bar',
+			data: {
+			  labels: <%= raw @bar_chart_data[:labels] %>,
+			  datasets: [{
+			    label: 'Pedidos ',
+			    data: <%= @bar_chart_data[:values] %>,
+			    borderWidth: 1,
+			    backgroundColor: [
+			      'rgba(255, 99, 132)',
+			      'rgba(255, 159, 64)',
+			      'rgba(75, 192, 192)',
+			      'rgba(54, 162, 235)',
+			      'rgba(153, 102, 255)',
+			      'rgba(201, 203, 207)'
+			    ],
+			    borderColor: [
+			      'rgb(255, 99, 132)',
+			      'rgb(255, 159, 64)',
+			      'rgb(75, 192, 192)',
+			      'rgb(54, 162, 235)',
+			      'rgb(153, 102, 255)',
+			      'rgb(201, 203, 207)'
+			    ]
+			  }]
+			},
+			options: {
+				 plugins: {
+				    legend: {
+				      display: false
+				    }
+  				},
+				scales: {
+					y: {
+						beginAtZero: true
+					}
+				}
+			}
+		});
+
+		const amountByProject = document.getElementById('orderAmountByProject');
+
+		new Chart(amountByProject, {
+			type: 'doughnut',
+
+			data:{
+				labels: <%= raw @pie_chart_data[:labels] %>,
+				datasets: [{
+					label: 'Custo',
+					data: <%= @pie_chart_data[:values] %>,
+					backgroundColor: [
+				      'rgba(255, 99, 132)',
+				      'rgba(255, 159, 64)',
+				      'rgba(75, 192, 192)',
+				      'rgba(54, 162, 235)',
+				      'rgba(153, 102, 255)',
+				      'rgba(201, 203, 207)'
+				    ],
+					hoverOffset: 4
+				}]
+			},
+			options: {
+			  aspectRatio: 2
+			}
+		});
+	</script>
+<% end %>
