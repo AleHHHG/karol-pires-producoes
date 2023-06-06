@@ -5,10 +5,9 @@ Rails.application.routes.draw do
     put 'users' => 'devise/registrations#update', :as => 'user_registration'
   end
   get 'dashboard', to: 'dashboard#index'
+  root "dashboard#index"
   resources :approvers
   resources :owners
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root "orders#index"
   resources :projects
   resources :orders do
      get 'budget_request', on: :member
