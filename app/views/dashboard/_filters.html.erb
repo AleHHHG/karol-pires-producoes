@@ -1,0 +1,27 @@
+<div class="accordion mb-5">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#filters">
+        Filtros
+      </button>
+    </h2>
+    <div id="filters" class="accordion-collapse collapse show">
+      <div class="accordion-body bg-light">
+        <%= form_with url: dashboard_path, method: :get do |form| %>
+          <div class="row">
+            <div class="col">
+              <%= form.label 'Data inicial', class: 'form-label' %>
+              <%= form.date_field :initial_date,  class: 'form-select', value: format_date(@initial_date, '%Y-%m-%d'), required: true   %>
+            </div>
+            <div class="col">
+              <%= form.label 'Data final', class: 'form-label' %>
+              <%= form.date_field :end_date, class: 'form-select', value: format_date(@end_date, '%Y-%m-%d'), required: true  %>
+            </div>
+          </div>
+          <%= form.submit "Pesquisar", class: 'btn btn-dark mt-4 float-end' %>
+          <br clear="all"/>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

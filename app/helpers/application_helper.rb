@@ -9,7 +9,7 @@ module ApplicationHelper
     text.gsub(/\n/, '<br />').html_safe
   end
 
-  def format_date(date, format: '%d/%m/%Y')
+  def format_date(date, format = '%d/%m/%Y')
     date.strftime(format)
   end
 end
