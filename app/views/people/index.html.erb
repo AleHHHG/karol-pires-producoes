@@ -43,6 +43,11 @@
     <% end %>
   </tbody>
 </table>
+<br clear="all" />
+
+<div class="d-flex justify-content-center mt-2">
+  <%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+</div>
 
 <div class="modal fade" id="importFile">
   <div class="modal-dialog">
