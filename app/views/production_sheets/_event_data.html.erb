@@ -1,0 +1,60 @@
+<div class="row mb-3">
+  <div class="col-md-9">
+    <%= form.label 'Local do show', class: 'form-label' %>
+    <%= form.text_field :place, class: 'form-control' %>
+  </div>
+  <div class="col-md-3">
+    <%= form.label 'Local:', class: 'form-label mb-3' %>
+    <br/>
+    <div class="form-check form-check-inline">
+      <%= form.radio_button :open_place, 1, class: 'form-check-input' %>
+      <%= form.label :open_place, 'Aberto', class: 'form-check-label' %>
+    </div>
+    <div class="form-check form-check-inline">
+      <%= form.radio_button :open_place, 21, class: 'form-check-input' %>
+      <%= form.label :open_place, 'Fechado', class: 'form-check-label' %>
+    </div>
+  </div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-9">
+    <%= form.label 'Endereço do show', class: 'form-label' %>
+    <%= form.text_field :address, class: 'form-control' %>
+  </div>
+  <div class="col-md-3">
+   <%= form.label 'Acesso Carreta/ônibus ao palco:', class: 'form-label mb-3' %>
+    <br/>
+    <div class="form-check form-check-inline">
+      <%= form.radio_button :vehicle_accesses_backstage, 1, class: 'form-check-input' %>
+      <%= form.label :vehicle_accesses_backstage, 'Aberto', class: 'form-check-label' %>
+    </div>
+    <div class="form-check form-check-inline">
+      <%= form.radio_button :vehicle_accesses_backstage, 21, class: 'form-check-input' %>
+      <%= form.label :vehicle_accesses_backstage, 'Fechado', class: 'form-check-label' %>
+    </div>
+  </div>
+</div>
+<div class="row mb-3">
+  <div class="col">
+    <%= form.label 'Tipo de evento', class: 'form-label' %>
+    <%= form.text_field :kind, class: 'form-control' %>
+  </div>
+  <div class="col">
+    <%= form.label 'Abertura dos portões', class: 'form-label' %>
+    <%= form.text_field :opening_public, class: 'form-control' %>
+  </div>
+  <div class="col">
+    <%= form.label 'Capacidade de público', class: 'form-label' %>
+    <%= form.number_field :audience_capacity, class: 'form-control' %>
+  </div>
+  <div class="col">
+    <%= form.label 'Horário prev para inicio', class: 'form-label' %>
+    <%= form.text_field :start_time, class: 'form-control' %>
+  </div>
+</div>
+<div class="row mb-3">
+  <div class="col">
+    <%= form.label 'Ordem das atrações', class: 'form-label' %>
+    <%= form.text_area :lineup, size: "90x5", class: 'form-control'  %>
+  </div>
+</div>

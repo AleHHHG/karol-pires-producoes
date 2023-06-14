@@ -1,0 +1,71 @@
+<%= form_with(model: production_sheet) do |form| %>
+  <% if production_sheet.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>O show não pode ser salvo:</h4>
+      <ul>
+        <% production_sheet.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p class="mb-4">
+    Data: <%= format_date(production_sheet.date) %> <br/>
+    Projeto: <%= production_sheet.project.name %> <br/>
+    Contratante: <%= production_sheet.hire.name %>
+  </p>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active show-form" data-container="event-data-container" href="javascript:;">Dados do evento</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link show-form" data-container="local-production-container" href="javascript:;">Produção local</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link show-form" data-container="hotel-data-container" href="javascript:;">Hotel</a>
+    </li>
+  </ul>
+  <div class="p-4 border-end border-bottom border-start">
+    <div class="event-data-container form-item">
+      <div class="row mb-3">
+        <div class="col-xs-12 col-md-4 mb-2">
+          <%= form.label 'Data', class: 'form-label' %>
+          <%= form.date_field :date, class: 'form-control', value: production_sheet.date, disabled: true  %>
+        </div>
+        <div class="col-xs-12 col-md-4 mb-2">
+          <%= form.label 'Cidade', class: 'form-label' %>
+          <%= form.text_field :city, class: 'form-control', value: production_sheet.event.city, disabled: true  %>
+        </div>
+        <div class="col-xs-12 col-md-4 mb-2">
+          <%= form.label 'Estado', class: 'form-label' %>
+          <%= form.text_field :state, class: 'form-control', value: production_sheet.event.state, disabled: true %>
+        </div>
+      </div>
+      <%= render 'event_data', form: form %>
+    </div>
+    <div class="local-production-container form-item" style="display: none">
+      <%= render 'local_production', form: form %>
+    </div>
+    <div class="hotel-data-container form-item" style="display: none">
+      <h1>hotel</h1>
+    </div>
+  </div>
+
+  <%= form.submit 'Salvar', class: 'btn btn-primary mt-3 btn-lg float-end' %>
+<% end %>
+<br clear="all" />
+
+<% content_for :script do %>
+  <script type="text/javascript">
+   
+    $(document).ready(function(){
+      $('.show-form').on('click', function(){
+        $('.show-form').removeClass('active');
+        $('.form-item').hide();
+        container = $(this).data('container');
+        $(this).addClass('active');
+        $('.'+container).show();
+      });
+    });
+  </script>
+<% end %>

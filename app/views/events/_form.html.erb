@@ -1,0 +1,45 @@
+<%= form_with(model: event) do |form| %>
+  <% if event.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>O show não pode ser salvo:</h4>
+
+      <ul>
+        <% event.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-xs-12 col-md-6 mt-2">
+      <%= form.label :project, 'Projeto', class: 'form-label' %>
+      <%= select :event, :project_id, Project.all.collect { |p| [ p.name, p.id ] }, { prompt: 'Selecione o projeto' }, { class: 'form-select' }  %>
+    </div>
+    <div class="col-xs-12 col-md-6 mt-2">
+      <%= form.label :hire, 'Contratante', class: 'form-label' %>
+      <%= select :event, :hire_id, Hire.all.collect { |h| [ h.name, h.id ] }, { prompt: 'Selecione o Contratante' }, { class: 'form-select' }  %>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col-xs-12 col-md-3 mt-2">
+      <%= form.label 'Nome', class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control'  %>
+    </div>
+    <div class="col-xs-12 col-md-3 mt-2">
+      <%= form.label 'Data', class: 'form-label' %>
+      <%= form.date_field :date, class: 'form-control'  %>
+    </div>
+    <div class="col-xs-12 col-md-3 mt-2">
+      <%= form.label 'Cidade', class: 'form-label' %>
+      <%= form.text_field :city, class: 'form-control'  %>
+    </div>
+    <div class="col-xs-12 col-md-3 mt-2">
+      <%= form.label 'Estado', class: 'form-label' %>
+      <%= form.text_field :state, class: 'form-control'  %>
+    </div>
+  </div>
+
+  <%= form.submit 'Salvar', class: 'btn btn-primary mt-3 btn-lg float-end' %>
+<% end %>
+<br clear="all" />

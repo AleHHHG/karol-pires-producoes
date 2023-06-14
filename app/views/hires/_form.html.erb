@@ -1,0 +1,30 @@
+<%= form_with(model: hire) do |form| %>
+  <% if hire.errors.any? %>
+    <div class="alert alert-danger">
+      <h4>O contratante não pode ser salvo:</h4>
+
+      <ul>
+        <% hire.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-xs-12 col-md-4 mt-2">
+      <%= form.label 'Nome', class: 'form-label' %>
+      <%= form.text_field :name, class: 'form-control'  %>
+    </div>
+    <div class="col-xs-12 col-md-4 mt-2">
+      <%= form.label :email, class: 'form-label' %>
+      <%= form.text_field :email, class: 'form-control'  %>
+    </div>
+    <div class="col-xs-12 col-md-4 mt-2">
+      <%= form.label 'Telefone', class: 'form-label' %>
+      <%= form.text_field :phone_number, class: 'form-control'  %>
+    </div>
+  </div>
+
+  <%= form.submit 'Salvar', class: 'btn btn-primary mt-3 btn-lg float-end' %>
+<% end %>
+<br clear="all" />

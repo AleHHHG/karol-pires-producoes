@@ -18,4 +18,7 @@ Rails.application.routes.draw do
   resources :people do
      post 'import_file', on: :collection
   end
+  resources :events
+  resources :hires
+  resources :production_sheets, only: %i[edit update]
 end

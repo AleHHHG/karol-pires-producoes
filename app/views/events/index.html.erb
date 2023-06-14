@@ -1,0 +1,45 @@
+<h2 class="mt-5 mb-5">
+  Shows
+  <%= link_icon(new_event_path, 'btn btn-primary float-end', 'fa-solid fa-plus', 'Novo Show' ) %>
+</h2>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Data</th>
+      <th>Projeto</th>
+      <th>Contratante</th>
+      <th>Ficha de produção completa?</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.name %></td>
+        <td><%= format_date(event.date) %></td>
+        <td><%= event.project.name %></td>
+        <td><%= event.hire.name %></td>
+        <td><%= event.production_sheet.completed ? 'Sim' : 'Não' %></td>
+        <td>
+          <div class="btn-group" role="group">
+            <button type="button" class="btn dropdown-toggle btn-md" data-bs-toggle="dropdown" aria-expanded="false">
+              Opções
+            </button>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Ficha de produção', edit_production_sheet_path(event.production_sheet), class: 'dropdown-item' %></li>
+              <li><%= link_to 'Detalhes', event_path(event), class: 'dropdown-item' %></li>
+              <li><%= link_to 'Editar', edit_event_path(event), class: 'dropdown-item' %></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><%= button_to 'Deletar', event, method: :delete, class: 'dropdown-item text-danger' %></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

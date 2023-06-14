@@ -1,0 +1,110 @@
+ <div class="row mb-3">
+  <%= form.label 'Produtor do evento', class: 'col-sm-4 col-form-label' %>
+  <div class="col-sm-4">
+    <%= form.text_field :general_producer, class: 'form-control', placeholder: 'Nome', data: { bs_toggle: 'tooltip', bs_title: 'Nome' } %>
+  </div>
+  <div class="col-sm-4">
+    <%= form.text_field :general_producer_phone, class: 'form-control', placeholder: 'Telefone', data: { bs_toggle: 'tooltip', bs_title: 'Telefone' } %>
+  </div>
+</div>
+<div class="row mb-3">
+  <%= form.label 'Responsável pelo evento', class: 'col-sm-4 col-form-label' %>
+  <div class="col-sm-4">
+    <%= form.text_field :event_holder, class: 'form-control', placeholder: 'Nome', data: { bs_toggle: 'tooltip', bs_title: 'Nome' } %>
+  </div>
+  <div class="col-sm-4">
+    <%= form.text_field :event_holder_phone, class: 'form-control', placeholder: 'Telefone', data: { bs_toggle: 'tooltip', bs_title: 'Telefone' } %>
+  </div>
+</div>
+<div class="row mb-3">
+  <%= form.label 'Responsável pela diária de alimentação', class: 'col-sm-4 col-form-label' %>
+  <div class="col-sm-4">
+    <%= form.text_field :feeding_holder, class: 'form-control', placeholder: 'Nome', data: { bs_toggle: 'tooltip', bs_title: 'Nome' } %>
+  </div>
+  <div class="col-sm-4">
+    <%= form.text_field :feeding_holder_phone, class: 'form-control', placeholder: 'Telefone', data: { bs_toggle: 'tooltip', bs_title: 'Telefone' } %>
+  </div>
+</div>
+<div class="row mb-3">
+  <%= form.label 'Responsável empresa de som', class: 'col-sm-4 col-form-label' %>
+  <div class="col-sm-4">
+    <%= form.text_field :sound_holder, class: 'form-control', placeholder: 'Nome', data: { bs_toggle: 'tooltip', bs_title: 'Nome' } %>
+  </div>
+  <div class="col-sm-4">
+    <%= form.text_field :sound_holder_phone, class: 'form-control', placeholder: 'Telefone', data: { bs_toggle: 'tooltip', bs_title: 'Telefone' } %>
+  </div>
+</div>
+<div class="row mb-3">
+  <%= form.label 'Responsável empresa de luz', class: 'col-sm-4 col-form-label' %>
+  <div class="col-sm-4">
+    <%= form.text_field :lighting_holder, class: 'form-control', placeholder: 'Nome', data: { bs_toggle: 'tooltip', bs_title: 'Nome' } %>
+  </div>
+  <div class="col-sm-4">
+    <%= form.text_field :lighting_holder_phone, class: 'form-control', placeholder: 'Telefone', data: { bs_toggle: 'tooltip', bs_title: 'Telefone' } %>
+  </div>
+</div>
+<div class="row mb-3">
+  <%= form.label 'Responsável empresa de palco', class: 'col-sm-4 col-form-label' %>
+  <div class="col-sm-4">
+    <%= form.text_field :stage_holder, class: 'form-control', placeholder: 'Nome', data: { bs_toggle: 'tooltip', bs_title: 'Nome' } %>
+  </div>
+  <div class="col-sm-4">
+    <%= form.text_field :stage_holder_phone, class: 'form-control', placeholder: 'Telefone', data: { bs_toggle: 'tooltip', bs_title: 'Telefone' } %>
+  </div>
+</div>
+<div class="row mb-3">
+  <%= form.label 'Responsável empresa de LED', class: 'col-sm-4 col-form-label' %>
+  <div class="col-sm-4">
+    <%= form.text_field :led_holder, class: 'form-control', placeholder: 'Nome', data: { bs_toggle: 'tooltip', bs_title: 'Nome' } %>
+  </div>
+  <div class="col-sm-4">
+    <%= form.text_field :led_holder_phone, class: 'form-control', placeholder: 'Telefone', data: { bs_toggle: 'tooltip', bs_title: 'Telefone' } %>
+  </div>
+</div>
+<div class="alert alert-warning alert-dismissible fade show">
+  <strong>Não será permitido van escolar ou da área da saúde.</strong> <br/>
+  Obs.: Vidros escuros e ar condicionado, favor enviar fotos previamente
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<div class="row mb-3">
+  <label class="col-sm-4 col-form-label">
+    Responsável Serviço de 3 (três) Vans executivas para traslado local
+  </label>
+  <div class="col-sm-4">
+    <%= form.text_field :transport_holder, class: 'form-control', placeholder: 'Nome', data: { bs_toggle: 'tooltip', bs_title: 'Nome' } %>
+  </div>
+  <div class="col-sm-4">
+    <%= form.text_field :transport_holder_phone, class: 'form-control', placeholder: 'Telefone', data: { bs_toggle: 'tooltip', bs_title: 'Telefone' } %>
+  </div>
+</div>
+<div class="row mb-3">
+  <label class="col-sm-4 col-form-label">
+   Responsável Carregadores: 10 (dez) Carregadores
+  </label>
+  <div class="col-sm-4">
+    <%= form.text_field :assistant_holder, class: 'form-control', placeholder: 'Nome', data: { bs_toggle: 'tooltip', bs_title: 'Nome' } %>
+  </div>
+  <div class="col-sm-4">
+    <%= form.text_field :assistant_holder_phone, class: 'form-control', placeholder: 'Telefone', data: { bs_toggle: 'tooltip', bs_title: 'Telefone' } %>
+  </div>
+</div>
+<div class="row mb-3">
+  <label class="col-sm-4 col-form-label">
+    Responsável Camarim: 02 (dois) camarins
+  </label>
+  <div class="col-sm-4">
+    <%= form.text_field :dressing_room_holder, class: 'form-control', placeholder: 'Nome', data: { bs_toggle: 'tooltip', bs_title: 'Nome' } %>
+  </div>
+  <div class="col-sm-4">
+    <%= form.text_field :dressing_room_holder_phone, class: 'form-control', placeholder: 'Telefone', data: { bs_toggle: 'tooltip', bs_title: 'Telefone' } %>
+  </div>
+</div>
+<div class="row mb-3">
+  <%= form.label 'Responsável Equipe de Segurança', class: 'col-sm-4 col-form-label' %>
+  <div class="col-sm-4">
+    <%= form.text_field :security_holder, class: 'form-control', placeholder: 'Nome', data: { bs_toggle: 'tooltip', bs_title: 'Nome' } %>
+  </div>
+  <div class="col-sm-4">
+    <%= form.text_field :security_holder_phone, class: 'form-control', placeholder: 'Telefone', data: { bs_toggle: 'tooltip', bs_title: 'Telefone' } %>
+  </div>
+</div>

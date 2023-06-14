@@ -10,12 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_25_192157) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_14_191835) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "approvers", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.date "date"
+    t.string "state"
+    t.string "city"
+    t.bigint "project_id"
+    t.bigint "hire_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hire_id"], name: "index_events_on_hire_id"
+    t.index ["project_id"], name: "index_events_on_project_id"
+  end
+
+  create_table "hires", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -71,6 +92,58 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_25_192157) do
     t.index ["project_id"], name: "index_people_on_project_id"
   end
 
+  create_table "production_sheets", force: :cascade do |t|
+    t.string "place"
+    t.string "address"
+    t.boolean "open_place"
+    t.boolean "vehicle_accesses_backstage"
+    t.string "kind"
+    t.string "opening_public"
+    t.string "lineup"
+    t.integer "audience_capacity"
+    t.string "start_time"
+    t.string "general_producer"
+    t.string "general_producer_phone"
+    t.string "event_holder"
+    t.string "event_holder_phone"
+    t.string "feeding_holder"
+    t.string "feeding_holder_phone"
+    t.string "sound_holder"
+    t.string "sound_holder_phone"
+    t.string "lighting_holder"
+    t.string "lighting_holder_phone"
+    t.string "stage_holder"
+    t.string "stage_holder_phone"
+    t.string "led_holder"
+    t.string "led_holder_phone"
+    t.string "transport_holder"
+    t.string "transport_holder_phone"
+    t.string "assistant_holder"
+    t.string "assistant_holder_phone"
+    t.string "dressing_room_holder"
+    t.string "dressing_room_holder_phone"
+    t.string "security_holder"
+    t.string "security_holder_phone"
+    t.string "hotel_name"
+    t.string "hotel_holder"
+    t.string "hotel_phone"
+    t.string "hotel_fax"
+    t.boolean "parking"
+    t.boolean "bus_parking"
+    t.string "hotel_city"
+    t.string "hotel_state"
+    t.string "hotel_address"
+    t.string "distance"
+    t.string "checkin_time"
+    t.string "site"
+    t.string "email"
+    t.bigint "event_id"
+    t.boolean "completed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_production_sheets_on_event_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -112,9 +185,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_25_192157) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "hires"
+  add_foreign_key "events", "projects"
   add_foreign_key "orders", "approvers"
   add_foreign_key "orders", "owners"
   add_foreign_key "orders", "projects"
   add_foreign_key "orders", "suppliers"
   add_foreign_key "people", "projects"
+  add_foreign_key "production_sheets", "events"
 end
