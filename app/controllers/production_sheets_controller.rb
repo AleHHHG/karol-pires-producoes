@@ -1,9 +1,11 @@
 class ProductionSheetsController < ApplicationController
   before_action :set_product_sheet, only: %i[ edit update ]
+  skip_before_action :authenticate_user!, only: %i[ edit update]
 
   # GET /product_sheets/1/edit
   def edit
     @page_title = 'Ficha de produção'
+    render layout: current_user ? 'application' : 'blank'
   end
 
   # PATCH/PUT /product_sheets/1 or /product_sheets/1.json

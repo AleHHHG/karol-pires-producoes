@@ -1,9 +1,13 @@
 <h2 class="mt-5 mb-4">
 	Ficha de produção
-	<div class="float-end">
-		<%= link_icon(events_path, 'btn btn-light float-end', 'fa-regular fa-circle-left', 'Voltar' ) %>
-		<%= link_icon(events_path, 'btn btn-light float-end me-2', 'fa-brands fa-whatsapp', 'Solicitar preenchimento' ) %> 
-	</div>
+	<% if current_user %>
+		<div class="float-end">
+			<%= link_icon(events_path, 'btn btn-light float-end', 'fa-regular fa-circle-left', 'Voltar' ) %>
+			<%= link_icon(events_path, 'btn btn-light float-end me-2', 'fa-brands fa-whatsapp', 'Solicitar preenchimento' ) %> 
+		</div>
+	<% end %>
 </h2>
 
 <%= render 'form', production_sheet: @production_sheet %>
+
+<br clear="all">

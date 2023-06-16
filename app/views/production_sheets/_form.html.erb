@@ -10,9 +10,14 @@
     </div>
   <% end %>
   <p class="mb-4">
-    Data: <%= format_date(production_sheet.date) %> <br/>
-    Projeto: <%= production_sheet.project.name %> <br/>
-    Contratante: <%= production_sheet.hire.name %>
+    <strong>Data:</strong> <%= format_date(production_sheet.date) %> <br/>
+    <strong>Projeto:</strong> <%= production_sheet.project.name %> <br/>
+    <strong>Contratante:</strong> <%= production_sheet.hire.name %> <br/>
+    <% if !current_user %>
+      <strong>Pré Produção responsável:</strong> Karol Pires <br/>
+      <strong>e-mail:</strong> karolpires@clubedocowboy.com.br <br/>
+      <strong>Telefone:</strong> (34) 99189-6392
+    <% end %>
   </p>
   <ul class="nav nav-tabs">
     <li class="nav-item">
@@ -51,7 +56,7 @@
     </div>
   </div>
 
-  <%= form.submit 'Salvar', class: 'btn btn-primary mt-3 btn-lg float-end' %>
+  <%= form.submit 'Salvar', class: 'btn btn-primary mt-4 btn-lg float-end' %>
 <% end %>
 <br clear="all" />
 

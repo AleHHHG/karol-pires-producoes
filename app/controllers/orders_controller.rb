@@ -77,7 +77,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/print
   def print
-    render layout: 'print'
+    render layout: 'blank'
   end
 
   private
