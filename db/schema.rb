@@ -127,7 +127,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_191835) do
     t.string "hotel_name"
     t.string "hotel_holder"
     t.string "hotel_phone"
-    t.string "hotel_fax"
     t.boolean "parking"
     t.boolean "bus_parking"
     t.string "hotel_city"
@@ -135,10 +134,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_14_191835) do
     t.string "hotel_address"
     t.string "distance"
     t.string "checkin_time"
-    t.string "site"
     t.string "email"
     t.bigint "event_id"
-    t.boolean "completed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_production_sheets_on_event_id"

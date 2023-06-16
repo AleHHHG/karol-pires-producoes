@@ -35,7 +35,6 @@ class CreateProductionSheets < ActiveRecord::Migration[7.0]
       t.string :hotel_name
       t.string :hotel_holder
       t.string :hotel_phone
-      t.string :hotel_fax
       t.boolean :parking
       t.boolean :bus_parking
       t.string :hotel_city
@@ -43,10 +42,8 @@ class CreateProductionSheets < ActiveRecord::Migration[7.0]
       t.string :hotel_address
       t.string :distance
       t.string :checkin_time
-      t.string :site
       t.string :email
       t.belongs_to :event, index: true, foreign_key: true
-      t.boolean :completed, default: false
       t.timestamps
     end
   end
