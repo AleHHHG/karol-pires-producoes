@@ -1,0 +1,76 @@
+<div class="row mb-3">
+  <div class="col">
+    <%= form.label 'Nome', class: 'form-label' %>
+    <%= form.text_field :hotel_name, class: 'form-control' %>
+  </div>
+  <div class="col">
+    <%= form.label 'Responsável pela reserva', class: 'form-label' %>
+    <%= form.text_field :hotel_holder, class: 'form-control' %>
+  </div>
+  <div class="col">
+    <%= form.label 'Telefone', class: 'form-label' %>
+    <%= form.number_field :hotel_telefone, class: 'form-control' %>
+  </div>
+  <div class="col">
+    <%= form.label 'Fax', class: 'form-label' %>
+    <%= form.text_field :hotel_fax, class: 'form-control' %>
+  </div>
+</div>
+<div class="row mb-3">
+  <div class="col">
+    <%= form.label 'Endereço', class: 'form-label' %>
+    <%= form.text_field :hotel_address, class: 'form-control' %>
+  </div>
+  <div class="col">
+    <%= form.label 'Cidade', class: 'form-label' %>
+    <%= form.text_field :hotel_city, class: 'form-control' %>
+  </div>
+  <div class="col">
+    <%= form.label 'Estado', class: 'form-label' %>
+    <%= form.number_field :hotel_state, class: 'form-control' %>
+  </div>
+</div>
+<div class="row mb-3">
+  <div class="col-md-6">
+   <%= form.label 'Estacionamento:', class: 'form-label mb-3' %>
+    <br/>
+    <div class="form-check form-check-inline">
+      <%= form.radio_button :parking, 1, class: 'form-check-input' %>
+      <%= form.label :parking, 'Sim', class: 'form-check-label' %>
+    </div>
+    <div class="form-check form-check-inline">
+      <%= form.radio_button :parking, 0, class: 'form-check-input' %>
+      <%= form.label :parking, 'Não', class: 'form-check-label' %>
+    </div>
+  </div>
+  <div class="col-md-3">
+   <%= form.label 'Ônibus para na porta do hotel:', class: 'form-label mb-3' %>
+    <br/>
+    <div class="form-check form-check-inline">
+      <%= form.radio_button :bus_parking, 1, class: 'form-check-input' %>
+      <%= form.label :parking, 'Sim', class: 'form-check-label' %>
+    </div>
+    <div class="form-check form-check-inline">
+      <%= form.radio_button :bus_parking, 0, class: 'form-check-input' %>
+      <%= form.label :bus_parking, 'Não', class: 'form-check-label' %>
+    </div>
+  </div>
+</div>
+<div class="row mb-3">
+  <div class="col">
+    <%= form.label 'Site', class: 'form-label' %>
+    <%= form.text_field :site, class: 'form-control' %>
+  </div>
+  <div class="col">
+    <%= form.label 'Email', class: 'form-label' %>
+    <%= form.text_field :email, class: 'form-control' %>
+  </div>
+  <div class="col">
+    <%= form.label 'Distância do local do show', class: 'form-label' %>
+    <%= form.number_field :distance, class: 'form-control' %>
+  </div>
+  <div class="col">
+    <%= form.label 'Horário liberado para check-in', class: 'form-label' %>
+    <%= form.text_field :checkin_time, class: 'form-control' %>
+  </div>
+</div>

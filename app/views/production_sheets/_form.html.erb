@@ -41,13 +41,13 @@
           <%= form.text_field :state, class: 'form-control', value: production_sheet.event.state, disabled: true %>
         </div>
       </div>
-      <%= render 'event_data', form: form %>
+      <%= render 'event_info_form', form: form %>
     </div>
     <div class="local-production-container form-item" style="display: none">
-      <%= render 'local_production', form: form %>
+      <%= render 'local_production_form', form: form %>
     </div>
     <div class="hotel-data-container form-item" style="display: none">
-      <h1>hotel</h1>
+      <%= render 'hotel_form', form: form %>
     </div>
   </div>
 
