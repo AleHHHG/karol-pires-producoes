@@ -12,7 +12,7 @@
   </div>
   <div class="col">
     <%= form.label 'Telefone', class: 'form-label' %>
-    <%= form.number_field :hotel_telefone, class: 'form-control' %>
+    <%= form.text_field :hotel_phone, class: 'form-control' %>
   </div>
   <div class="col">
     <%= form.label 'Fax', class: 'form-label' %>
@@ -30,7 +30,7 @@
   </div>
   <div class="col">
     <%= form.label 'Estado', class: 'form-label' %>
-    <%= form.number_field :hotel_state, class: 'form-control' %>
+    <%= form.text_field :hotel_state, class: 'form-control' %>
   </div>
 </div>
 <div class="row mb-3">
@@ -38,11 +38,11 @@
    <%= form.label 'Estacionamento:', class: 'form-label mb-3' %>
     <br/>
     <div class="form-check form-check-inline">
-      <%= form.radio_button :parking, 1, class: 'form-check-input' %>
+      <%= form.radio_button :parking, true, class: 'form-check-input' %>
       <%= form.label :parking, 'Sim', class: 'form-check-label' %>
     </div>
     <div class="form-check form-check-inline">
-      <%= form.radio_button :parking, 0, class: 'form-check-input' %>
+      <%= form.radio_button :parking, false, class: 'form-check-input' %>
       <%= form.label :parking, 'Não', class: 'form-check-label' %>
     </div>
   </div>
@@ -50,11 +50,11 @@
    <%= form.label 'Ônibus para na porta do hotel:', class: 'form-label mb-3' %>
     <br/>
     <div class="form-check form-check-inline">
-      <%= form.radio_button :bus_parking, 1, class: 'form-check-input' %>
+      <%= form.radio_button :bus_parking, true, class: 'form-check-input' %>
       <%= form.label :parking, 'Sim', class: 'form-check-label' %>
     </div>
     <div class="form-check form-check-inline">
-      <%= form.radio_button :bus_parking, 0, class: 'form-check-input' %>
+      <%= form.radio_button :bus_parking, false, class: 'form-check-input' %>
       <%= form.label :bus_parking, 'Não', class: 'form-check-label' %>
     </div>
   </div>
@@ -70,7 +70,7 @@
   </div>
   <div class="col">
     <%= form.label 'Distância do local do show', class: 'form-label' %>
-    <%= form.number_field :distance, class: 'form-control' %>
+    <%= form.text_field :distance, class: 'form-control' %>
   </div>
   <div class="col">
     <%= form.label 'Horário liberado para check-in', class: 'form-label' %>

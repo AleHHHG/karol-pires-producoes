@@ -1,0 +1,162 @@
+<div class="mt-4 mb-2 float-end" id="printButtons">
+    <a href="javascript:;"  onclick="window.print()" class="btn btn-light">
+        <i class="fa-solid fa-print"></i> Imprimir
+    </a>
+    <%= link_icon(edit_production_sheet_path(@production_sheet), 'btn btn-light', 'fa-regular fa-circle-left', 'Voltar' ) %>
+</div>
+<br clear="all" />
+
+<h1 class="mb-4 text-center">Ficha de produção</h1>
+
+<div class="row">
+    <div class="">
+</div>
+
+
+<h4 class="mb-3 text-center">Dados do evento</h4>
+
+<table class="table table-bordered mb-4">
+    <tbody>
+        <tr>
+            <td>Data do evento:</td>
+            <td colspan="3"><%= format_date(@production_sheet.date) %></td>
+        </tr>
+        <tr>
+            <td>Cidade:</td>
+            <td><%= @production_sheet.event.city %></td>
+            <td>Estado:</td>
+            <td><%= @production_sheet.event.state %></td>
+        </tr>
+        <tr>
+            <td>Local do Show:</td>
+            <td colspan="2"><%= @production_sheet.place %></td>
+            <td>Local aberto? <%= @production_sheet.open_place ? 'Sim' : 'Não' %> </td>
+        </tr>
+        <tr>
+            <td>End. Local Show: </td>
+            <td colspan="2"><%= @production_sheet.address %></td>
+            <td>Acesso Carreta/ônibus ao palco: ? <%= @production_sheet.vehicle_accesses_backstage ? 'Sim' : 'Não' %> </td>
+        </tr>
+        <tr>
+            <td>Tipo de evento: </td>
+            <td colspan="2"><%= @production_sheet.kind %></td>
+            <td>Abertura dos portões: ? <%= @production_sheet.opening_public%> </td>
+        </tr>
+        <tr>
+            <td>Ordem das atrações:</td>
+            <td colspan="3"><%= text_with_breackline(@production_sheet.lineup) %></td>
+        </tr>
+        <tr>
+            <td>Capacidade:</td>
+            <td colspan="3"><%= @production_sheet.audience_capacity %></td>
+        </tr>
+        <tr>
+            <td>Horário Prev. Apres. Artista:</td>
+            <td colspan="3"><%= @production_sheet.start_time %></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h4 class="mb-3 text-center">Produção Local</h4>
+
+<table class="table table-bordered mb-4">
+    <tbody>
+         <tr>
+            <td style="width: 33%">Produtor do evento</td>
+            <td><%= @production_sheet.general_producer %></td>
+            <td>Contato: <%= @production_sheet.general_producer_phone %></td>
+        </tr>
+        <tr>
+            <td>Responsável pelo evento</td>
+            <td><%= @production_sheet.event_holder %></td>
+            <td>Contato: <%= @production_sheet.event_holder_phone %></td>
+        </tr>
+        <tr>
+            <td>Responsável pela diária de alimentação</td>
+            <td><%= @production_sheet.feeding_holder %></td>
+            <td>Contato: <%= @production_sheet.feeding_holder_phone %></td>
+        </tr>
+        <tr>
+            <td>Responsável empresa de som</td>
+            <td><%= @production_sheet.sound_holder %></td>
+            <td>Contato: <%= @production_sheet.sound_holder_phone %></td>
+        </tr>
+        <tr>
+            <td>Responsável empresa de luz</td>
+            <td><%= @production_sheet.lighting_holder %></td>
+            <td>Contato: <%= @production_sheet.lighting_holder_phone %></td>
+        </tr>
+        <tr>
+            <td>Responsável empresa de palco</td>
+            <td><%= @production_sheet.stage_holder %></td>
+            <td>Contato: <%= @production_sheet.stage_holder_phone %></td>
+        </tr>
+        <tr>
+            <td>Responsável empresa de LED</td>
+            <td><%= @production_sheet.led_holder %></td>
+            <td>Contato: <%= @production_sheet.led_holder_phone %></td>
+        </tr>
+        <tr>
+            <td>Responsável Serviço de 3 (três) Vans executivas para traslado local</td>
+            <td><%= @production_sheet.transport_holder %></td>
+            <td>Contato: <%= @production_sheet.transport_holder_phone %></td>
+        </tr>
+        <tr>
+            <td>Responsável Carregadores: 10 (dez) Carregadores</td>
+            <td><%= @production_sheet.assistant_holder %></td>
+            <td>Contato: <%= @production_sheet.assistant_holder_phone %></td>
+        </tr>
+        <tr>
+            <td>Responsável Camarim: 02 (dois) camarins</td>
+            <td><%= @production_sheet.dressing_room_holder %></td>
+            <td>Contato: <%= @production_sheet.dressing_room_holder_phone %></td>
+        </tr>
+        <tr>
+            <td>Responsável Equipe de Segurança</td>
+            <td><%= @production_sheet.security_holder %></td>
+            <td>Contato: <%= @production_sheet.security_holder_phone %></td>
+        </tr>
+    </tbody>
+</table>
+
+<h4 class="mb-3 text-center">Hotel</h4>
+
+<table class="table table-bordered mb-4">
+    <tbody>
+        <tr>
+            <td style="width: 50%">Nome: <%= @production_sheet.hotel_name %></td>
+            <td>Responsável pela reserva: <%= @production_sheet.hotel_holder %></td>
+        </tr>
+        <tr>
+            <td style="width: 50%">Telefones: <%= @production_sheet.hotel_phone %></td>
+            <td>FAX: <%= @production_sheet.hotel_fax %></td>
+        </tr>
+        <tr>
+            <td style="width: 50%">Endereço: <%= @production_sheet.hotel_address %></td>
+            <td>
+                Estacionamento: <%= @production_sheet.parking ? 'Sim' : 'Não' %> <br/>
+                Ônibus para na porta do hotel: <%= @production_sheet.parking ? 'Sim' : 'Não' %>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 50%">Cidade: <%= @production_sheet.hotel_city %></td>
+            <td>Estado: <%= @production_sheet.hotel_state %></td>
+        </tr>
+        <tr>
+            <td style="width: 50%">Distância do local do show: <%= @production_sheet.distance %></td>
+            <td>Horário liberado para check-in: <%= @production_sheet.checkin_time %></td>
+        </tr>
+        <tr>
+            <td style="width: 50%">Site: <%= @production_sheet.site %></td>
+            <td>Email: <%= @production_sheet.email %></td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+
+

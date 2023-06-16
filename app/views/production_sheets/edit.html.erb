@@ -2,8 +2,9 @@
 	Ficha de produção
 	<% if current_user %>
 		<div class="float-end">
-			<%= link_icon(events_path, 'btn btn-light float-end', 'fa-regular fa-circle-left', 'Voltar' ) %>
-			<%= link_icon(events_path, 'btn btn-light float-end me-2', 'fa-brands fa-whatsapp', 'Solicitar preenchimento' ) %> 
+			<%= link_icon(events_path, 'btn btn-light', 'fa-brands fa-whatsapp', 'Solicitar preenchimento' ) %> 
+			<%= link_icon(print_production_sheet_path(@production_sheet.id), 'btn btn-light', 'fa-solid fa-file-pdf', 'Pagina de  impressão' ) %>
+			<%= link_icon(events_path, 'btn btn-light', 'fa-regular fa-circle-left', 'Voltar' ) %>
 		</div>
 	<% end %>
 </h2>

@@ -20,5 +20,7 @@ Rails.application.routes.draw do
   end
   resources :events
   resources :hires
-  resources :production_sheets, only: %i[edit update]
+  resources :production_sheets, only: %i[edit update] do
+    get 'print', on: :member
+  end
 end
