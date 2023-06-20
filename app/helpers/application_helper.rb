@@ -6,6 +6,7 @@ module ApplicationHelper
   end
 
   def text_with_breackline(text)
+    return '' if text.nil?
     text.gsub(/\n/, '<br />').html_safe
   end
 
