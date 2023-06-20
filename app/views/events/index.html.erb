@@ -6,7 +6,7 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Nome</th>
+      <th>Cidade/Estado</th>
       <th>Data</th>
       <th>Projeto</th>
       <th>Contratante</th>
@@ -18,7 +18,7 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.name %></td>
+        <td><%= "#{event.city}/#{event.state}"  %></td>
         <td><%= format_date(event.date) %></td>
         <td><%= event.project.name %></td>
         <td><%= event.hire.name %></td>
