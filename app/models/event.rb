@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  validates :name, :date, presence: true
+  validates :date, presence: true
   belongs_to :hire
   belongs_to :project
   has_one :production_sheet, dependent: :destroy
