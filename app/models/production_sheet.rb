@@ -5,4 +5,8 @@ class ProductionSheet < ApplicationRecord
   def completed?
     !self.attributes.values.include?(nil) && !self.attributes.values.include?('')
   end
+
+  def encrypted_id
+    EncryptionService.new(self.id).encrypt
+  end
 end

@@ -1,4 +1,4 @@
-<%= form_with(model: production_sheet) do |form| %>
+<%= form_with(url: production_sheet_path(production_sheet.encrypted_id), method: :put, scope: 'production_sheet') do |form| %>
   <% if production_sheet.errors.any? %>
     <div class="alert alert-danger">
       <h4>O show não pode ser salvo:</h4>

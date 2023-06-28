@@ -28,7 +28,12 @@ class ProductionSheetsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product_sheet
-      @production_sheet = ProductionSheet.find(params[:id])
+      begin
+        id = EncryptionService.new(params[:id]).decrypt
+      rescue
+        id = params[:id]
+      end
+      @production_sheet = ProductionSheet.find(id)
     end
 
     # Only allow a list of trusted parameters through.

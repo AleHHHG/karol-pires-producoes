@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
   get 'dashboard', to: 'dashboard#index'
   root "dashboard#index"
+  get '/ficha-producao/:id', to: 'production_sheets#edit', as: 'public_production_sheet'
   resources :approvers
   resources :owners
   resources :projects
