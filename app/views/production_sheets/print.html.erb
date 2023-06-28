@@ -10,7 +10,7 @@
 
 <h5 class="mb-3 text-center">Dados do evento</h5>
 
-<table class="table table-bordered mb-4">
+<table class="table table-sm table-bordered mb-4 table-print">
     <tbody>
         <tr>
             <td>Data do evento:</td>
@@ -52,11 +52,9 @@
     </tbody>
 </table>
 
-<div class="pagebreak">
-
 <h5 class="mb-3 text-center">Produção Local</h5>
 
-<table class="table table-bordered mb-4">
+<table class="table table-sm table-bordered mb-4 table-print">
     <tbody>
          <tr>
             <td style="width: 33%">Produtor do evento</td>
@@ -116,9 +114,11 @@
     </tbody>
 </table>
 
+<div class="pagebreak">
+
 <h5 class="mb-3 text-center">Hotel</h5>
 
-<table class="table table-bordered mb-4">
+<table class="table table-sm table-bordered mb-4 table-print">
     <tbody>
         <tr>
             <td style="width: 50%">Nome: <%= @production_sheet.hotel_name %></td>

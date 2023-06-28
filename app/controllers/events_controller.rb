@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   # GET /events or /events.json
   def index
     @page_title = 'Eventos'
-    @events = Event.all
+    @pagy, @events = pagy(Event.all.order('date asc'))
   end
 
   # GET /events/1 or /events/1.json
