@@ -2,7 +2,9 @@
 	Ficha de produção
 	<% if current_user %>
 		<div class="float-end">
-			<%= link_icon(events_path, 'btn btn-light', 'fa-brands fa-whatsapp', 'Solicitar preenchimento' ) %> 
+			<a href="javascript:;" class="btn btn-light copy-to-clipboard" data-url="<%= public_production_sheet_url(@production_sheet.encrypted_id) %>">
+				<i class="fa-solid fa-share-from-square"></i> Compartilhar
+			</a>
 			<%= link_icon(print_production_sheet_path(@production_sheet.id), 'btn btn-light', 'fa-solid fa-file-pdf', 'Pagina de  impressão' ) %>
 			<%= link_icon(events_path, 'btn btn-light', 'fa-regular fa-circle-left', 'Voltar' ) %>
 		</div>
@@ -12,3 +14,16 @@
 <%= render 'form', production_sheet: @production_sheet %>
 
 <br clear="all">
+
+
+<% content_for :script do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.copy-to-clipboard').on('click', function(){
+      	url = $(this).data('url')
+        navigator.clipboard.writeText(url);
+        alert('Copiado para área de transferencia');
+      });
+    });
+  </script>
+<% end %>
