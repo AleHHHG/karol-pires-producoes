@@ -61,7 +61,7 @@
     <%= form.label :status, 'Status', class: 'form-label' %>
     <%= select :order, :status, [['Solicitado', 'requested'], ['Em andamento', 'in_progress'], ['Cancelado', 'canceled'], ['Concluído', 'done'], ['Faturado', 'billed']], {}, class: 'form-select' %>
     <br>
-    <%= form.label :files, 'Arquivos', class: 'form-label' %>
+    <%= form.label :files, 'Adicionar arquivos', class: 'form-label' %> <br/>
     <%= form.file_field :files, class: 'files', multiple: true %>
 
     <br clear="all">
