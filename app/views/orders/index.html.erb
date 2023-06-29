@@ -16,6 +16,7 @@
         <th>Observação</th>
         <th>Solicitação</th>
         <th>Status</th>
+        <th>Arquivos</th>
         <th>&nbsp;</th>
       </tr>
     </thead>
@@ -40,6 +41,13 @@
               <span class="badge text-bg-warning">Faturado</span>
             <% else %>
               <span class="badge text-bg-success">Concluído</span>
+            <% end %>
+          </td>
+          <td>
+            <% if order.files.attached? %>
+              <%= link_icon(order_path(order), '', 'fa-solid fa-paperclip', "#{order.files.count}  arquivo(s)" ) %>
+            <% else %>
+              -
             <% end %>
           </td>
           <td>

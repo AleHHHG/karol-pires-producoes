@@ -32,6 +32,5 @@ module ApplicationHelper
     else
       icon = 'fa-file'
     end
-    icon
   end
 end
