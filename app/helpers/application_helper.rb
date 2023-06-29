@@ -13,4 +13,25 @@ module ApplicationHelper
   def format_date(date, format = '%d/%m/%Y')
     date.strftime(format)
   end
+
+  def build_file_name(file)
+    "<i class='fa-solid #{file_icon(file.content_type)}'></i> #{file.filename}".html_safe
+  end
+
+  private
+
+  def file_icon(content_type)
+    if content_type.include?('pdf')
+      icon = 'fa-file-pdf'
+    elsif content_type.include?('image')
+      icon = 'fa-file-image'
+    elsif content_type.include?('zip')
+      icon = 'fa-file-zipper'
+    elsif content_type.include?('spreadsheetml')
+      icon = 'fa-file-excel'
+    else
+      icon = 'fa-file'
+    end
+    icon
+  end
 end

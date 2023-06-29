@@ -60,6 +60,25 @@
   <% else %>
     <%= form.label :status, 'Status', class: 'form-label' %>
     <%= select :order, :status, [['Solicitado', 'requested'], ['Em andamento', 'in_progress'], ['Cancelado', 'canceled'], ['Concluído', 'done'], ['Faturado', 'billed']], {}, class: 'form-select' %>
+    <br>
+    <%= form.label :files, 'Arquivos', class: 'form-label' %>
+    <%= form.file_field :files, class: 'files', multiple: true %>
+
+    <br clear="all">
+
+    <% if order.files.attached? %>
+      <br clear="all">
+      <ul class="list-group list-group-flush">
+        <% order.files.each do |file| %>
+          <li class="list-group-item">
+            <%= link_to rails_blob_path(file, disposition: "attachment"), class: 'link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover' do %>
+               <%= build_file_name(file) %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
   <% end %>
 
   <br clear="all">

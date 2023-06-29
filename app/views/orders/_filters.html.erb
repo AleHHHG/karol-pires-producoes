@@ -30,7 +30,7 @@
             </div>
             <div class="col">
               <%= form.label :status, 'Status', class: 'form-label' %>
-              <%= form.select :by_status, [['Solicatado', 'requested'], ['Em andamento', 'in_progress'], ['Cancelado', 'canceled'], ['Concluído', 'done'], ['Faturado', 'billed']], {  include_blank: 'Todos', selected: current_scopes[:by_status] }, { class: 'form-select' }  %>
+              <%= form.select :by_status, [['Solicitado', 'requested'], ['Em andamento', 'in_progress'], ['Cancelado', 'canceled'], ['Concluído', 'done'], ['Faturado', 'billed']], {  include_blank: 'Todos', selected: current_scopes[:by_status] }, { class: 'form-select' }  %>
             </div>
           </div>
           <%= form.submit "Pesquisar", class: 'btn btn-dark mt-4 float-end' %>
