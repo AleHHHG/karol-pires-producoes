@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects or /projects.json
   def index
     @page_title = 'Projetos'
-    @projects = Project.all
+    @projects = Project.all.order('name asc')
   end
 
   # GET /projects/1 or /projects/1.json
@@ -69,6 +69,7 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:name, :document_number, :phone, :email, :adress, :bank, :ag, :cc, :pix)
+      params.require(:project).permit(:name, :document_number, :phone, :email, :adress, :bank, :ag, :cc, :pix,
+                                      :logo, :office_logo, :record_logo, :extra_logo)
     end
 end

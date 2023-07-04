@@ -58,6 +58,59 @@
   </div>
   <br clear="all" />
 
+  <br clear="all" />
+
+  <h5 class="card-title mb-2">Logos</h5>
+  <div class="row">
+    <div class="col">
+      <%= form.label :logo, 'Artista', class: 'form-label' %>
+      <%= form.file_field :logo, class: 'form-control'%>
+    </div>
+    <div class="col">
+      <%= form.label :office_logo, 'Escritório', class: 'form-label' %>
+      <%= form.file_field :office_logo, class: 'form-control'%>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="col">
+      <%= form.label :record_logo, 'Gravadora', class: 'form-label' %>
+      <%= form.file_field :record_logo, class: 'form-control'%>
+    </div>
+     <div class="col">
+      <%= form.label :extra_logo, 'Adicional', class: 'form-label' %>
+      <%= form.file_field :extra_logo, class: 'form-control'%>
+    </div>
+  </div>
+  <br clear="all" />
+
+  <div class="row">
+    <% if project.logo.attached? %>
+      <div class="col-3">
+          <%= image_tag project.logo, class: 'project_logos' %>
+      </div>
+    <% end %>
+
+    <% if project.office_logo.attached? %>
+      <div class="col-3">
+        <%= image_tag project.office_logo, class: 'project_logos' %>
+      </div>
+    <% end %>
+
+    <% if project.record_logo.attached? %>
+      <div class="col-3">
+          <%= image_tag project.record_logo, class: 'project_logos' %>
+      </div>
+    <% end %>
+    <% if project.extra_logo.attached? %>
+      <div class="col-3">
+          <%= image_tag project.extra_logo, class: 'project_logos' %>
+      </div>
+    <% end %>
+  </div>
+
+  <br clear="all" />
+
   <%= form.submit 'Salvar', class: 'btn btn-primary mt-3 btn-lg float-end' %>
 <% end %>
 <br clear="all" />
