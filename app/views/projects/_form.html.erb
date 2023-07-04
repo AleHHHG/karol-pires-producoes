@@ -88,24 +88,24 @@
     <div class="row">
       <% if project.logo.attached? %>
         <div class="col-3">
-            <%= image_tag project.logo, class: 'project_logos' %>
+            <%= image_tag project.logo, class: 'project_logos updload_logos' %>
         </div>
       <% end %>
 
       <% if project.office_logo.attached? %>
         <div class="col-3">
-          <%= image_tag project.office_logo, class: 'project_logos' %>
+          <%= image_tag project.office_logo, class: 'project_logos updload_logos' %>
         </div>
       <% end %>
 
       <% if project.record_logo.attached? %>
         <div class="col-3">
-            <%= image_tag project.record_logo, class: 'project_logos' %>
+            <%= image_tag project.record_logo, class: 'project_logos updload_logos' %>
         </div>
       <% end %>
       <% if project.extra_logo.attached? %>
         <div class="col-3">
-            <%= image_tag project.extra_logo, class: 'project_logos' %>
+            <%= image_tag project.extra_logo, class: 'project_logos updload_logos' %>
         </div>
       <% end %>
     </div>

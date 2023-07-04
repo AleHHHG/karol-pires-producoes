@@ -6,6 +6,34 @@
 </div>
 <br clear="all" />
 
+<% if @production_sheet.project.has_logo? %>
+    <div class="row">
+      <% if @production_sheet.project.office_logo.attached? %>
+        <div class="col-3">
+            <%= image_tag @production_sheet.project.office_logo, class: 'production_sheet_logo updload_logos' %>
+        </div>
+      <% end %>
+
+      <% if @production_sheet.project.record_logo.attached? %>
+        <div class="col-3">
+          <%= image_tag @production_sheet.project.record_logo, class: 'production_sheet_logo updload_logos' %>
+        </div>
+      <% end %>
+
+      <% if @production_sheet.project.logo.attached? %>
+        <div class="col-3">
+            <%= image_tag @production_sheet.project.logo, class: 'production_sheet_logo updload_logos' %>
+        </div>
+      <% end %>
+      <% if @production_sheet.project.extra_logo.attached? %>
+        <div class="col-3">
+            <%= image_tag @production_sheet.project.extra_logo, class: 'production_sheet_logo updload_logos' %>
+        </div>
+      <% end %>
+    </div>
+    <br clear="all" />
+<% end %>
+
 <h1 class="mb-4 text-center">Ficha de produção</h1>
 
 <h5 class="mb-3 text-center">Dados do evento</h5>
