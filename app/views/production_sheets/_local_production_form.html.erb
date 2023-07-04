@@ -85,6 +85,12 @@
   </div>
 </div>
 <div class="row mb-3">
+  <%= form.label :transport_images, 'Imagens das vans', class: 'col-sm-4 col-form-label' %>
+  <div class="col-sm-8">
+    <%= form.file_field :transport_images, class: 'form-control', multiple: true %>
+  </div>
+</div>
+<div class="row mb-3">
   <label class="col-sm-4 col-form-label">
    Responsável Carregadores: 10 (dez) Carregadores
   </label>
@@ -115,3 +121,11 @@
     <%= form.text_field :security_holder_phone, class: 'form-control', placeholder: 'Telefone', data: { bs_toggle: 'tooltip', bs_title: 'Telefone' } %>
   </div>
 </div>
+<% if production_sheet.transport_images.attached? %>
+  <div class="fotorama" data-nav="thumbs">
+    <% production_sheet.transport_images.each do |file| %>
+          <%= image_tag file %>
+    <% end %>
+  </div>
+  <br clear="all">
+<% end %>

@@ -56,6 +56,12 @@
 	mix-blend-mode: multiply;
 }
 
+.transport_images{
+	width: 100%;
+	object-fit: cover;
+	aspect-ratio: 3/2;
+}
+
 @media print {
  #printButtons{
  	display: none;

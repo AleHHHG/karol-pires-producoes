@@ -38,7 +38,7 @@ class ProductionSheetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def production_sheet_params
-      params.require(:production_sheet).permit(event_data_params + local_production_params + hotel_params)
+      params.require(:production_sheet).permit(event_data_params + local_production_params + hotel_params + photo_params)
     end
 
     def event_data_params
@@ -55,5 +55,9 @@ class ProductionSheetsController < ApplicationController
     def hotel_params
       %i[ hotel_name hotel_holder hotel_phone hotel_fax parking bus_parking hotel_city hotel_state hotel_address 
           distance checkin_time site email ]
+    end
+
+    def photo_params
+      [transport_images: []]
     end
 end
