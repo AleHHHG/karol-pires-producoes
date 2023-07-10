@@ -9,6 +9,10 @@
       <div class="accordion-body bg-light">
         <%= form_with url: orders_path, method: :get do |form| %>
           <div class="row">
+             <div class="col">
+              <%= form.label "Numero do pedido", class: 'form-label' %>
+              <%= form.number_field :by_id, class: 'form-control', value: current_scopes[:by_id] %>
+            </div>
             <div class="col">
               <%= form.label "Solicitante", class: 'form-label' %>
               <%= form.select :by_owner, Owner.all.collect { |p| [ p.name, p.id ] }, { include_blank: 'Todos', selected: current_scopes[:by_owner] }, { class: 'form-select' }  %>

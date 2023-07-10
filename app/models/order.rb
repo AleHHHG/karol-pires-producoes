@@ -7,6 +7,7 @@ class Order < ApplicationRecord
   has_and_belongs_to_many :people
   has_many_attached :files
 
+  scope :by_id, -> id { where(id: id) }
   scope :by_project, -> project { where(project: project) }
   scope :by_supplier, -> supplier { where(supplier: supplier) }
   scope :by_owner, -> owner { where(owner: owner) }

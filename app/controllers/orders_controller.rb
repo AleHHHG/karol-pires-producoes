@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
   has_scope :by_owner
   has_scope :by_approver
   has_scope :by_status
+  has_scope :by_id
 
   # GET /orders or /orders.json
   def index
